@@ -1,0 +1,446 @@
+[
+ {
+  "book_id": "BK-0001",
+  "knowledge_type_en": "Legal practice reference",
+  "summary_en": "A compact overview of UK pollution-control law as it stood in the mid-1990s, covering common law, regulatory bodies, environmental protection legislation, waste, water pollution, environmental auditing and the EC rules of the day.",
+  "best_for_en": "tracing UK environmental-law concepts, superseded legislation and institutional history; checking the 1990s legal context",
+  "currentness_note_en": "High risk: Brexit, devolution, the environmental permitting regime and the Environment Act 2021 have changed the current framework. Do not rely on this to determine permits, liability, limits or procedures.",
+  "better_source_en": "For real-world questions, first establish the jurisdiction (England/Wales/Scotland/Northern Ireland), then consult current government legislation and permitting guidance.",
+  "sources_en": [
+   {
+    "url": "https://ci.nii.ac.jp/ncid/BA25502603",
+    "supports_en": "bibliographic record"
+   },
+   {
+    "url": "https://www.gov.uk/guidance/check-if-you-need-an-environmental-permit",
+    "supports_en": "current regulatory entry point"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0002",
+  "knowledge_type_en": "Core textbook / classic monograph",
+  "summary_en": "The classic textbook that places groundwater flow, regional flow systems, hydrochemistry, well hydraulics, contaminant transport, resource evaluation and geotechnical engineering within a single unified framework.",
+  "best_for_en": "foundational concepts: Darcy flow, regional groundwater flow, advection-dispersion, natural hydrochemical evolution and contaminant hydrogeology",
+  "currentness_note_en": "The underlying physics and hydrochemistry remain highly reliable; software, site investigation, risk assessment, remediation techniques and regulation must be checked against modern sources.",
+  "better_source_en": "The Groundwater Project provides a digital preservation of the original and translated versions; it is not a revised edition.",
+  "sources_en": [
+   {
+    "url": "https://gw-project.org/books/groundwater/",
+    "supports_en": "full text, significance, digital preservation"
+   },
+   {
+    "url": "https://fc79.gw-project.org/about/",
+    "supports_en": "edition and digitisation notes"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0003",
+  "knowledge_type_en": "Thematic conference proceedings",
+  "summary_en": "An early interdisciplinary collection on petroleum-contaminated soils covering transport modelling, vadose-zone vapour detection, human exposure, public health, microbial degradation, soil vapour extraction, land treatment and underground storage-tank regulation.",
+  "best_for_en": "understanding petroleum-hydrocarbon contaminated-site terminology, the origins of technical approaches and early case studies",
+  "currentness_note_en": "Analytical methods, exposure parameters, clean-up thresholds, remediation processes and regulation have been substantially updated; do not adopt design values or standards directly from this book.",
+  "better_source_en": "Real-world projects should be re-evaluated against a current site conceptual model, risk assessment and verification procedures.",
+  "sources_en": [
+   {
+    "url": "https://agris.fao.org/search/ru/records/65de02060f3e94b9e5c93252",
+    "supports_en": "bibliographic and conference background"
+   },
+   {
+    "url": "https://www.gov.uk/government/publications/land-contamination-risk-management-lcrm",
+    "supports_en": "modern contaminated-site framework"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0004",
+  "knowledge_type_en": "Engineering handbook",
+  "summary_en": "A systematic handbook of construction dewatering: excavation dewatering, pumping tests, wellpoints and deep wells, open sump pumping, ejector wells, cut-off walls, ground freezing, grouting, recharge, pumps, piping and electrics, costing and contracts.",
+  "best_for_en": "comparing construction dewatering options, conventional system design, wellpoint/deep-well/cut-off methods and construction management",
+  "currentness_note_en": "The basic hydraulics remains useful; for equipment, disposal of contaminated water, approvals, numerical modelling, costing and contracts consult the 2007 third edition and current codes.",
+  "better_source_en": "2007: Construction Dewatering and Groundwater Control, 3rd ed.",
+  "sources_en": [
+   {
+    "url": "https://onlinelibrary.wiley.com/doi/book/10.1002/9780470168103",
+    "supports_en": "later edition, modern supplement"
+   },
+   {
+    "url": "https://ci.nii.ac.jp/ncid/BA84158125",
+    "supports_en": "bibliographic record"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0005",
+  "knowledge_type_en": "Specialist textbook",
+  "summary_en": "Runs from groundwater inorganic chemistry, sampling and measurement, graphical presentation of data, saline waters, environmental isotopes and rock-water reactions to corrosion and encrustation, with emphasis on turning chemical results into hydrogeological interpretation.",
+  "best_for_en": "major ions, Piper diagrams, mixing, ion exchange, redox, carbonate equilibria and interpreting salinisation",
+  "currentness_note_en": "Equilibrium chemistry and the traditional graphical methods remain valid; consult modern sources for sampling QA/QC, trace-level analysis, isotopes, PHREEQC and water-quality standards.",
+  "better_source_en": "Best used alongside modern hydrochemistry references and PHREEQC documentation.",
+  "sources_en": [
+   {
+    "url": "https://search.worldcat.org/es/title/Natural-inorganic-hydrochemistry-in-relation-to-groundwater-%3A-an-introduction/oclc/11043094",
+    "supports_en": "bibliographic record, table of contents"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0006",
+  "knowledge_type_en": "Case-study collection",
+  "summary_en": "Uses case studies to link drilling, surface and borehole geophysics, pumping tests, hydrochemistry, environmental isotopes, recharge estimation and groundwater-system modelling.",
+  "best_for_en": "training multi-evidence reasoning in groundwater resource evaluation, and finding case studies by technique",
+  "currentness_note_en": "Drilling and logging, isotopes, data processing, model calibration and regulation need modern supplements.",
+  "better_source_en": "The Groundwater Project's resource-evaluation chapters serve as a modern open-access supplement.",
+  "sources_en": [
+   {
+    "url": "https://obnb.uk/p7060521-case-studies-in-groundwater-resources-evaluation",
+    "supports_en": "bibliographic record"
+   },
+   {
+    "url": "https://fc79.gw-project.org/english/chapter-8/",
+    "supports_en": "modern open-access supplement"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0007",
+  "knowledge_type_en": "Engineering textbook",
+  "summary_en": "An engineering-oriented general groundwater reference covering groundwater occurrence, well hydraulics, water wells, water-level responses, quality and pollution, management, models, artificial recharge and seawater intrusion.",
+  "best_for_en": "quickly looking up traditional formulae, design methods, well hydraulics and resource-management frameworks by engineering problem",
+  "currentness_note_en": "Computer modelling, understanding of contamination, resource competition and regulation have changed greatly since 1980; the basic well hydraulics remains usable, but consult the third edition or newer sources for modelling and management.",
+  "better_source_en": "Todd & Mays, Groundwater Hydrology, 3rd ed., Wiley, 2004/2005.",
+  "sources_en": [
+   {
+    "url": "https://bcs.wiley.com/he-bcs/Books?action=index&bcsId=2143&itemId=0471059374&itemTypeId=BKS",
+    "supports_en": "later edition"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0008",
+  "knowledge_type_en": "Specialist monograph",
+  "summary_en": "A systematic treatment of radioactive waste sources, disposal concepts, geological time, weathering, sorption and radionuclide migration, host rock types, faulting and seismicity, fluid-rock interaction, natural analogues, glaciation and climate, and site selection.",
+  "best_for_en": "understanding geological barriers, natural analogues, host rock selection and early safety thinking on geological disposal",
+  "currentness_note_en": "The underlying geoscience remains valid; waste inventories, barrier design, THMC models, safety cases, public participation and regulatory regimes must follow modern standards.",
+  "better_source_en": "For real siting questions, consult IAEA and current national geological disposal safety-case and regulatory materials.",
+  "sources_en": [
+   {
+    "url": "https://www.cambridge.org/core/journals/mineralogical-magazine/article/abs/g-milnes-geology-and-radwaste-london-and-orlando-academic-press-1985-xvi-328-pp-97-figs-price-cloth-5000-paper-3695/2D4BC5D303D9B481722F3148848C9EFC",
+    "supports_en": "bibliographic and scholarly context"
+   },
+   {
+    "url": "https://www.gov.uk/guidance/regulating-the-geological-disposal-of-radioactive-waste-environmental-protection",
+    "supports_en": "current regulatory entry point"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0009",
+  "knowledge_type_en": "Applied textbook",
+  "summary_en": "A problem- and example-centred text covering aquifer properties, groundwater flow and well hydraulics, recharge, regional flow, geology, hydrochemistry, contamination, resource management, field methods and models.",
+  "best_for_en": "learning or revising applied calculation procedures, worked examples and typical hydrogeological problems",
+  "currentness_note_en": "The 2nd edition's software, field tools, contaminant remediation, standards and management content is clearly dated; the basic problem-solving framework remains valuable.",
+  "better_source_en": "Fetter & Kreamer, Applied Hydrogeology, 5th ed., Waveland Press, 2022.",
+  "sources_en": [
+   {
+    "url": "https://waveland.com/browse.php?pgtitle=C.+W.+Fetter%2C+David++Kreamer&t=732",
+    "supports_en": "latest edition and modern content"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0010",
+  "knowledge_type_en": "Theoretical monograph",
+  "summary_en": "An in-depth treatment of pore-space structure, Darcy's law, permeability, non-Darcy flow, statistical theory, and miscible and immiscible multiphase displacement, spanning groundwater, petroleum and soil mechanics.",
+  "best_for_en": "understanding permeability, capillarity, flow equations, multiphase displacement and classic theoretical derivations",
+  "currentness_note_en": "Modern pore-scale imaging, digital rock physics, computational multiphase flow, upscaling, reactive transport and uncertainty analysis are not covered.",
+  "better_source_en": "Suitable as a source for mechanisms and classic derivations; not to be used on its own as a modern numerical modelling handbook.",
+  "sources_en": [
+   {
+    "url": "https://www.jstor.org/stable/10.3138/j.ctvfrxmtw",
+    "supports_en": "digital edition, contents and editions"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0011",
+  "knowledge_type_en": "Policy and institutional study",
+  "summary_en": "Institutional frameworks, interest groups, economic appraisal and case studies of British water supply, sewage and pollution control, water recreation, land drainage and flood alleviation.",
+  "best_for_en": "historical institutional comparison, multi-objective water planning, stakeholder analysis and pre-1980 British water governance cases",
+  "currentness_note_en": "High risk: predates the 1989 privatisation, the 1991 legislation, the Environment Agency, modern WRMPs and climate adaptation frameworks. Institutional responsibilities and procedures must not be carried over directly.",
+  "better_source_en": "For real planning work, consult current materials such as the Environment Agency National Framework for Water Resources 2025.",
+  "sources_en": [
+   {
+    "url": "https://www.routledge.com/Water-Planning-in-Britain/Parker-Penning-Rowsell/p/book/9781032728308",
+    "supports_en": "bibliographic record and scope"
+   },
+   {
+    "url": "https://www.gov.uk/government/publications/national-framework-for-water-resources-2025-water-for-growth-nature-and-a-resilient-future",
+    "supports_en": "current planning framework"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0012",
+  "knowledge_type_en": "Emergency-response reference handbook",
+  "summary_en": "A wide-ranging compilation on hazardous materials regulation, risk, prevention, response planning, spills into water bodies, volatiles, PPE, disposal and landmark incident case histories.",
+  "best_for_en": "incident history, early response-plan structures and the study of technical evolution",
+  "currentness_note_en": "Do not use this to select PPE, safety distances, reporting thresholds, monitoring methods or disposal routes; its content predates modern HAZWOPER, ICS and a large body of current regulation.",
+  "better_source_en": "Field incidents should be handled by trained personnel using the latest SDS, current regulations and the Emergency Response Guidebook.",
+  "sources_en": [
+   {
+    "url": "https://ci.nii.ac.jp/ncid/BA63387000",
+    "supports_en": "bibliographic record"
+   },
+   {
+    "url": "https://www.phmsa.dot.gov/sites/phmsa.dot.gov/files/2024-04/ERG2024-Eng-Web-a.pdf",
+    "supports_en": "modern emergency-response replacement"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0013",
+  "knowledge_type_en": "Comprehensive textbook",
+  "summary_en": "Organised around the water cycle and catchment systems: the global water cycle, precipitation and evapotranspiration, soil water, infiltration, overland flow, groundwater, open channels, snow and ice, flood hydrographs and river regimes.",
+  "best_for_en": "understanding catchment-systems thinking, disciplinary history and the links between hydrological processes and landforms",
+  "currentness_note_en": "Observation methods, remote sensing/GIS, distributed models, data assimilation, extreme-value statistics and climate change understanding have been fundamentally updated since.",
+  "better_source_en": "The current Routledge edition is a historical reprint/digitisation, not a content revision.",
+  "sources_en": [
+   {
+    "url": "https://www.routledge.com/Introduction-to-Physical-Hydrology/Chorley/p/book/9780429273339",
+    "supports_en": "edition history, description and contents"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0014",
+  "knowledge_type_en": "Technical handbook",
+  "summary_en": "The classic handbook on pumping-test design, confined/unconfined/leaky aquifers, boundaries, partial penetration, anisotropy, recovery tests and parameter interpretation.",
+  "best_for_en": "classic analytical methods (Theis, Thiem, Hantush) and field design and interpretation of pumping tests",
+  "currentness_note_en": "Classic analytical methods remain fundamental; supplement with modern approaches for automated monitoring, numerical inversion, heterogeneity and uncertainty.",
+  "better_source_en": "1990 fully revised 2nd edition, ILRI Publication 47, official open PDF.",
+  "sources_en": [
+   {
+    "url": "https://research.wur.nl/en/publications/analysis-and-evaluation-of-pumping-test-data/",
+    "supports_en": "edition history and bibliography"
+   },
+   {
+    "url": "https://edepot.wur.nl/70972",
+    "supports_en": "latest edition open full text"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0015",
+  "knowledge_type_en": "Resource-evaluation monograph",
+  "summary_en": "Large comprehensive monograph running from groundwater occurrence, exploration and aquifer testing through recharge, regional groundwater reservoirs, resource evaluation and early simulation models.",
+  "best_for_en": "the classic framework for regional groundwater resource evaluation, aquifer testing and historical case studies",
+  "currentness_note_en": "GIS, numerical modelling, calibration, uncertainty, ecological water requirements and regulation are clearly outdated.",
+  "better_source_en": "Can be paired with the Groundwater Project resource-evaluation chapters and modern modelling guidance.",
+  "sources_en": [
+   {
+    "url": "https://agris.fao.org/search/en/providers/122535/records/65de00bb0f3e94b9e5c92b0c",
+    "supports_en": "bibliographic record"
+   },
+   {
+    "url": "https://fc79.gw-project.org/english/chapter-8/",
+    "supports_en": "modern open-access supplement"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0016",
+  "knowledge_type_en": "Technical handbook",
+  "summary_en": "The 1976 printing of the same work as BK-0014, covering pumping-test design, classic aquifer models, boundaries, anisotropy, partial penetration and parameter interpretation.",
+  "best_for_en": "comparing tables of contents and photo quality across printings; looking up classic pumping-test methods",
+  "currentness_note_en": "Prefer the fully revised 1990 2nd edition; consult newer sources for modern automated monitoring and inverse methods.",
+  "better_source_en": "1990 fully revised 2nd edition, official WUR PDF.",
+  "sources_en": [
+   {
+    "url": "https://research.wur.nl/en/publications/analysis-and-evaluation-of-pumping-test-data/",
+    "supports_en": "edition relationships"
+   },
+   {
+    "url": "https://edepot.wur.nl/70972",
+    "supports_en": "preferred modern edition"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0017",
+  "knowledge_type_en": "Government technical report",
+  "summary_en": "USGS classic explaining solute sources in natural waters, mineral equilibria, redox, sampling and analytical quality, major and trace constituents, hydrochemical graphics, and the influence of lithology and human activity.",
+  "best_for_en": "looking up element sources, likely species, solubility controls, concentration ranges and traditional hydrochemical interpretation",
+  "currentness_note_en": "Prefer the 3rd edition; even there, use modern sources for trace analysis, sampling protocols, speciation calculations and standards.",
+  "better_source_en": "USGS Water-Supply Paper 2254, 3rd ed., 1985, official open access.",
+  "sources_en": [
+   {
+    "url": "https://pubs.usgs.gov/publication/wsp1473",
+    "supports_en": "official full text, held edition"
+   },
+   {
+    "url": "https://pubs.usgs.gov/publication/wsp2254",
+    "supports_en": "official full text, later edition"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0018",
+  "knowledge_type_en": "Field handbook",
+  "summary_en": "Practical handbook covering desk-study preparation, field instruments, water levels and flows, rainfall and spring flow, pumping tests, hydrochemistry, recharge estimation, field records and reporting.",
+  "best_for_en": "planning hydrogeological fieldwork, choosing basic measurement methods and organising field data",
+  "currentness_note_en": "For automatic loggers, GNSS/GIS, tracers, sampling QA/QC, safety and regulation, rely primarily on the 2023 5th edition.",
+  "better_source_en": "Field Hydrogeology, 5th ed., Wiley, 2023.",
+  "sources_en": [
+   {
+    "url": "https://www.wiley-vch.de/de/fachgebiete/naturwissenschaften/field-hydrogeology-978-1-394-18062-2",
+    "supports_en": "latest edition"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0019",
+  "knowledge_type_en": "Engineering-geology conference proceedings",
+  "summary_en": "Groundwater effects on construction, soil and rock masses, slopes, excavations, tunnels, dams and mines, together with site investigation and monitoring, construction dewatering, groundwater exclusion, contamination and engineering case histories.",
+  "best_for_en": "finding historical case studies and failure mechanisms by engineering problem; not a uniformly structured textbook",
+  "currentness_note_en": "For real-world design, prefer the 2025 working party report, current standards and modern risk/numerical models.",
+  "better_source_en": "Engineering Geology of Groundwater in Design and Construction, Geological Society EGSP 31, 2025.",
+  "sources_en": [
+   {
+    "url": "https://www.lyellcollection.org/toc/egsp/3/1",
+    "supports_en": "chapter-level contents and papers"
+   },
+   {
+    "url": "https://www.geolsoc.org.uk/bookshop/products/engineering-geology-of-groundwater-in-design-and-construction-engineering-group-working-party-report/",
+    "supports_en": "modern successor work"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0020",
+  "knowledge_type_en": "Industrial reference handbook",
+  "summary_en": "Covers water quality, particle removal, distillation, ion exchange, membranes, electrodialysis, UV, instrumentation and control, pure-water storage and distribution, and industrial water applications in pharmaceuticals, electronics, boilers and food.",
+  "best_for_en": "understanding water-treatment unit processes, early pure-water systems and process comparisons",
+  "currentness_note_en": "Membranes, on-line monitoring, microbial control, disinfection by-products, pharmacopoeial validation and water-quality limits have all changed; do not carry over its specifications or dosages.",
+  "better_source_en": "For drinking water, consult current WHO/national standards; for pharmaceutical water, consult current pharmacopoeias and validation guidance.",
+  "sources_en": [
+   {
+    "url": "https://books.google.com/books/about/Handbook_of_water_purification.html?id=MyNSAAAAMAAJ",
+    "supports_en": "bibliographic record and contents"
+   },
+   {
+    "url": "https://www.who.int/teams/environment-climate-change-and-health/water-sanitation-and-health/water-safety-and-quality/drinking-water-quality-guidelines",
+    "supports_en": "current guideline entry point"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0021",
+  "knowledge_type_en": "Technical textbook series",
+  "summary_en": "Introductory volume covering plant–soil–water relationships, salinisation, crop response, soil water and groundwater hydraulics.",
+  "best_for_en": "soil–plant–water fundamentals and salinity problems in land drainage",
+  "currentness_note_en": "The processes and equations remain durable; for materials and equipment, monitoring, environmental requirements and economic parameters, consult the 2006 edition and current standards.",
+  "better_source_en": "Drainage Principles and Applications, 3rd ed., WUR, 2006, official PDF.",
+  "sources_en": [
+   {
+    "url": "https://edepot.wur.nl/333115",
+    "supports_en": "full text of held volume"
+   },
+   {
+    "url": "https://edepot.wur.nl/262058",
+    "supports_en": "modern consolidated edition"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0022",
+  "knowledge_type_en": "Technical textbook series",
+  "summary_en": "Field drainage theory, well hydraulics, salt leaching, irrigation effects, rainfall–runoff and computational models.",
+  "best_for_en": "field drainage equations, drainage by wells, salt balance and watershed runoff theory",
+  "currentness_note_en": "The classic equations remain usable; older-style simulation, equipment and parameters require modern verification.",
+  "better_source_en": "WUR 2006 3rd edition official PDF.",
+  "sources_en": [
+   {
+    "url": "https://edepot.wur.nl/333102",
+    "supports_en": "full text of held volume"
+   },
+   {
+    "url": "https://edepot.wur.nl/262058",
+    "supports_en": "modern consolidated edition"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0023",
+  "knowledge_type_en": "Technical textbook series",
+  "summary_en": "Survey procedures, rainfall and evapotranspiration, groundwater balance, soil hydraulic properties, hydraulic conductivity and pumping tests.",
+  "best_for_en": "surveys, measurement, parameter acquisition and field testing for land drainage projects",
+  "currentness_note_en": "Modern instrumentation, remote sensing, data management and QA/QC require up-to-date sources.",
+  "better_source_en": "WUR 2006 3rd edition official PDF.",
+  "sources_en": [
+   {
+    "url": "https://edepot.wur.nl/333110",
+    "supports_en": "full text of held volume"
+   },
+   {
+    "url": "https://edepot.wur.nl/262058",
+    "supports_en": "modern consolidated edition"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0024",
+  "knowledge_type_en": "Technical textbook series",
+  "summary_en": "Design of surface and subsurface drainage systems, dimensioning, operation and maintenance, problem soils, project management and economics.",
+  "best_for_en": "traditional methods for designing, operating and managing land drainage systems",
+  "currentness_note_en": "Equipment, materials, environmental requirements and economic parameters must be updated from the newer edition and the standards applicable at the project location.",
+  "better_source_en": "WUR 2006 3rd edition official PDF.",
+  "sources_en": [
+   {
+    "url": "https://edepot.wur.nl/333101",
+    "supports_en": "full text of held volume"
+   },
+   {
+    "url": "https://edepot.wur.nl/262058",
+    "supports_en": "modern consolidated edition"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0025",
+  "knowledge_type_en": "International conference proceedings",
+  "summary_en": "The influence of groundwater on agriculture, industry, cities, drought resilience and social development, with numerous 1980s case studies from Europe, Africa, Asia, the Americas and beyond.",
+  "best_for_en": "finding global case studies, establishing historical baselines, and comparing groundwater development with its socio-economic impacts",
+  "currentness_note_en": "All abstraction figures, hydrochemistry, population data, policies, climate information and sustainability conclusions must be re-verified.",
+  "better_source_en": "Can be read alongside the UNESCO World Water Development Report 2022: Groundwater for comparison.",
+  "sources_en": [
+   {
+    "url": "https://ci.nii.ac.jp/ncid/BD09138986",
+    "supports_en": "bibliographic record"
+   },
+   {
+    "url": "https://www.unesco.org/en/reports/wwdr/2022",
+    "supports_en": "modern global groundwater context"
+   }
+  ]
+ },
+ {
+  "book_id": "BK-0026",
+  "knowledge_type_en": "International conference proceedings",
+  "summary_en": "Case studies on thermal energy from groundwater, geothermal aquifers, heat pumps, heat storage and reinjection, mine hydrogeology, open-pit mines, rising groundwater beneath London, dewatering and fractured-media testing.",
+  "best_for_en": "classic case studies and early field data on low-temperature geothermal energy, mine hydrogeology and engineering groundwater control",
+  "currentness_note_en": "Heat-pump performance, models, well design, permits, environmental constraints and monitoring methods all require updating.",
+  "better_source_en": "Real-world design should use modern heat-transport models, pumping-test methods and current permitting guidance.",
+  "sources_en": [
+   {
+    "url": "https://ci.nii.ac.jp/ncid/BD09139005",
+    "supports_en": "bibliographic record"
+   },
+   {
+    "url": "https://www.gov.uk/guidance/open-loop-heat-pump-systems-permits-consents-and-licences",
+    "supports_en": "current permitting and currency reminder"
+   }
+  ]
+ }
+]
