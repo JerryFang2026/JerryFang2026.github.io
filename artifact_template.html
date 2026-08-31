@@ -1,0 +1,383 @@
+<title>Aquifer Notes</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Source+Sans+3:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg: #faf9f5;
+  --bg-card: #ffffff;
+  --ink: #22303a;
+  --ink-soft: #5c6b76;
+  --ink-faint: #8b98a2;
+  --accent: #0e7480;
+  --accent-soft: #e3f0f0;
+  --line: #e5e1d8;
+  --warn: #b45309;
+  --warn-soft: #fdf1e0;
+  --mark-bg: #ffe9a8;
+  --mark-ink: #4a3b00;
+  --shadow: 0 1px 3px rgba(34,48,58,.06), 0 8px 24px rgba(34,48,58,.05);
+  --serif: "Newsreader", Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --sans: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101820;
+    --bg-card: #18232c;
+    --ink: #e3e9ed;
+    --ink-soft: #a2aeb8;
+    --ink-faint: #6c7984;
+    --accent: #4fc6d0;
+    --accent-soft: #12333a;
+    --line: #253039;
+    --warn: #e8a04c;
+    --warn-soft: #33270f;
+    --mark-bg: #6b5618;
+    --mark-ink: #ffe9a8;
+    --shadow: 0 1px 3px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101820;
+  --bg-card: #18232c;
+  --ink: #e3e9ed;
+  --ink-soft: #a2aeb8;
+  --ink-faint: #6c7984;
+  --accent: #4fc6d0;
+  --accent-soft: #12333a;
+  --line: #253039;
+  --warn: #e8a04c;
+  --warn-soft: #33270f;
+  --mark-bg: #6b5618;
+  --mark-ink: #ffe9a8;
+  --shadow: 0 1px 3px rgba(0,0,0,.4);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--sans); font-size: 16px; line-height: 1.8;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+/* masthead */
+.masthead { background: var(--bg); }
+.masthead .wrap { display: flex; align-items: baseline; gap: 22px; flex-wrap: wrap; padding-top: 30px; padding-bottom: 14px; }
+.brand { font-family: var(--serif); font-size: 27px; font-weight: 700; cursor: pointer; color: var(--ink); }
+.tagline { color: var(--ink-faint); font-size: 13px; flex: 1 1 auto; }
+nav.main { display: flex; gap: 18px; align-items: baseline; }
+nav.main a { color: var(--ink-soft); font-size: 15px; }
+nav.main a.active { color: var(--accent); font-weight: 600; }
+#theme-toggle { background: none; border: 1px solid var(--line); border-radius: 999px; color: var(--ink-soft); cursor: pointer; font-size: 13px; padding: 2px 10px; font-family: var(--sans); }
+.waterline { display: block; width: 100%; height: 14px; color: var(--accent); opacity: .55; }
+
+/* home */
+.hero { padding: 44px 0 6px; }
+.hero h1 { font-family: var(--serif); font-size: 31px; line-height: 1.45; margin-bottom: 12px; text-wrap: balance; }
+.hero p { color: var(--ink-soft); max-width: 620px; }
+.post-list { padding: 22px 0 60px; }
+.post-item { padding: 26px 0; border-bottom: 1px solid var(--line); }
+.post-item .meta { font-size: 13px; color: var(--ink-faint); margin-bottom: 6px; font-family: var(--mono); }
+.chip { display: inline-block; background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 1px 10px; font-size: 12px; margin-right: 10px; font-family: var(--sans); }
+.post-item h2 { font-family: var(--serif); font-size: 22px; line-height: 1.55; margin-bottom: 8px; text-wrap: balance; }
+.post-item h2 a { color: var(--ink); }
+.post-item h2 a:hover { color: var(--accent); text-decoration: none; }
+.post-item .summary { color: var(--ink-soft); font-size: 15px; }
+.post-item .more { font-size: 14px; margin-top: 8px; display: inline-block; }
+
+/* article */
+article.post { padding: 40px 0 80px; max-width: 700px; margin: 0 auto; }
+article.post .meta { color: var(--ink-faint); font-size: 13px; margin-bottom: 28px; font-family: var(--mono); }
+article.post h1 { font-family: var(--serif); font-size: 30px; line-height: 1.5; margin-bottom: 10px; text-wrap: balance; }
+article.post h2 { font-family: var(--serif); font-size: 22px; margin: 38px 0 12px; }
+article.post h3 { font-family: var(--serif); font-size: 18px; margin: 28px 0 10px; }
+article.post p { margin: 14px 0; }
+article.post ul, article.post ol { margin: 14px 0 14px 1.6em; }
+article.post li { margin: 6px 0; }
+article.post blockquote { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 10px 16px; margin: 16px 0; border-radius: 0 6px 6px 0; }
+article.post hr { border: none; border-top: 1px solid var(--line); margin: 30px 0; }
+article.post code { font-family: var(--mono); font-size: .9em; background: var(--accent-soft); padding: 1px 5px; border-radius: 4px; }
+.backlink { font-size: 14px; }
+
+/* library */
+.lib-head { padding: 36px 0 4px; }
+.lib-head h1 { font-family: var(--serif); font-size: 28px; margin-bottom: 8px; }
+.lib-head p { color: var(--ink-soft); max-width: 640px; font-size: 15px; }
+.stats { display: flex; gap: 28px; flex-wrap: wrap; margin: 18px 0 6px; }
+.stat b { font-size: 23px; font-family: var(--serif); color: var(--accent); display: block; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 12px; color: var(--ink-faint); }
+.searchbar { position: sticky; top: 0; background: var(--bg); padding: 14px 0 10px; z-index: 5; }
+#q { width: 100%; padding: 11px 16px; font-size: 16px; color: var(--ink); background: var(--bg-card); border: 1.5px solid var(--line); border-radius: 10px; font-family: var(--sans); }
+#q:focus { outline: none; border-color: var(--accent); }
+.topic-chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 4px; }
+.topic-chips button { background: var(--bg-card); border: 1px solid var(--line); color: var(--ink-soft); border-radius: 999px; padding: 3px 12px; font-size: 13px; cursor: pointer; font-family: var(--sans); }
+.topic-chips button.on { background: var(--accent); border-color: var(--accent); color: var(--bg-card); }
+.result-note { font-size: 13px; color: var(--ink-faint); margin: 6px 0 14px; }
+.book-list { padding-bottom: 70px; }
+.book { background: var(--bg-card); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin-bottom: 14px; box-shadow: var(--shadow); cursor: pointer; }
+.book .row1 { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.book h3 { font-size: 17px; line-height: 1.5; flex: 1 1 320px; font-family: var(--sans); }
+.book h3 .vol { color: var(--ink-faint); font-weight: 400; font-size: 14px; }
+.book .year { color: var(--ink-faint); font-size: 12.5px; white-space: nowrap; font-family: var(--mono); }
+.book .byline { color: var(--ink-soft); font-size: 13px; margin-top: 2px; }
+.badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.badge { font-size: 12px; border-radius: 999px; padding: 1px 10px; background: var(--accent-soft); color: var(--accent); }
+.badge.risk { background: var(--warn-soft); color: var(--warn); }
+.badge.loc { background: transparent; border: 1px dashed var(--line); color: var(--ink-faint); font-family: var(--mono); font-size: 11px; }
+.book .bestfor { font-size: 14px; color: var(--ink-soft); margin-top: 8px; }
+.book .bestfor b { color: var(--ink); font-weight: 600; }
+.book .detail { display: none; margin-top: 14px; border-top: 1px dashed var(--line); padding-top: 14px; font-size: 14px; }
+.book.open .detail { display: block; }
+.detail dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; }
+.detail dt { color: var(--ink-faint); white-space: nowrap; }
+.detail dd { color: var(--ink); }
+.detail dd.mono { font-family: var(--mono); font-size: 13px; }
+.detail .note { background: var(--warn-soft); color: var(--warn); border-radius: 8px; padding: 10px 14px; margin: 12px 0; font-size: 13.5px; }
+.detail .srcs { margin: 6px 0 0; }
+.detail .srcs li { margin: 4px 0 4px 1.2em; }
+.detail .toc-box { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin-top: 12px; font-size: 13px; color: var(--ink-soft); max-height: 150px; overflow: hidden; white-space: pre-wrap; }
+.detail .toc-box.full { max-height: none; }
+.detail .toc-more { font-size: 13px; margin-top: 6px; display: inline-block; cursor: pointer; }
+mark { background: var(--mark-bg); color: var(--mark-ink); border-radius: 3px; padding: 0 2px; }
+
+/* about */
+.about { padding: 40px 0 80px; max-width: 700px; }
+.about h1 { font-family: var(--serif); font-size: 28px; margin-bottom: 16px; }
+.about h2 { font-family: var(--serif); font-size: 20px; margin: 30px 0 10px; }
+.about p { margin: 12px 0; }
+
+.site-footer { border-top: 1px solid var(--line); padding: 26px 0 40px; color: var(--ink-faint); font-size: 13px; }
+
+:where(a, button):focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+@media (max-width: 640px) {
+  .masthead .wrap { gap: 10px; padding-top: 20px; }
+  .brand { font-size: 22px; }
+  .tagline { flex-basis: 100%; order: 3; }
+  .hero h1 { font-size: 24px; }
+  article.post h1 { font-size: 24px; }
+  .detail dl { grid-template-columns: 1fr; }
+  .detail dt { margin-top: 6px; }
+}
+</style>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="brand" onclick="location.hash='#/'">Aquifer Notes</div>
+    <span class="tagline">Hydrogeology essays &amp; a searchable index of the professional bookshelf</span>
+    <nav class="main">
+      <a href="#/" data-nav="home">Home</a>
+      <a href="#/library" data-nav="library">Library</a>
+      <a href="#/about" data-nav="about">About</a>
+      <button id="theme-toggle" title="Toggle light/dark">☀︎ / ☾</button>
+    </nav>
+  </div>
+  <svg class="waterline" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,7 C50,1 100,13 150,7 C200,1 250,13 300,7 C350,1 400,13 450,7 C500,1 550,13 600,7 C650,1 700,13 750,7 C800,1 850,13 900,7 C950,1 1000,13 1050,7 C1100,1 1150,13 1200,7" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  </svg>
+</header>
+
+<main id="view" class="wrap"></main>
+<footer class="site-footer"><div class="wrap">© 2026 Jerry · Aquifer Notes · a personal study index</div></footer>
+
+<script>
+/*__DATA__*/
+</script>
+<script>
+function esc(s) {
+  return String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+function highlight(text, terms) {
+  let out = esc(text);
+  for (const t of terms) {
+    if (!t) continue;
+    const re = new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi");
+    out = out.replace(re, (m) => "" + m + "");
+  }
+  return out.replace(//g, "<mark>").replace(//g, "</mark>");
+}
+
+(function initTheme() {
+  let saved = null;
+  try { saved = localStorage.getItem("theme"); } catch (e) {}
+  if (saved === "dark" || saved === "light") document.documentElement.setAttribute("data-theme", saved);
+})();
+document.getElementById("theme-toggle").addEventListener("click", () => {
+  const root = document.documentElement;
+  const isDark = root.getAttribute("data-theme") === "dark" ||
+    (!root.getAttribute("data-theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
+  const next = isDark ? "light" : "dark";
+  root.setAttribute("data-theme", next);
+  try { localStorage.setItem("theme", next); } catch (e) {}
+});
+
+const view = document.getElementById("view");
+const libState = { q: "", topic: null };
+
+function homeHTML() {
+  const items = POSTS.filter((p) => !p.draft).map((p) =>
+    '<div class="post-item">' +
+    '<div class="meta"><span class="chip">' + esc(p.category) + "</span>" + esc(p.date) + "</div>" +
+    '<h2><a href="#/post/' + encodeURIComponent(p.id) + '">' + esc(p.title) + "</a></h2>" +
+    '<div class="summary">' + esc(p.summary) + "</div>" +
+    '<a class="more" href="#/post/' + encodeURIComponent(p.id) + '">Read more →</a></div>'
+  ).join("");
+  return '<section class="hero"><h1>Hydrogeology, one chapter at a time.</h1>' +
+    '<p>Essays and study notes, plus a growing <a href="#/library">Library</a> — a searchable index of the professional bookshelf. Search it to find which book, and which chapter, holds your answer.</p></section>' +
+    '<section class="post-list">' + items + "</section>";
+}
+
+function postHTML(id) {
+  const post = POSTS.find((p) => p.id === id);
+  if (!post) return '<article class="post"><h1>Post not found</h1><p><a href="#/">← Back to home</a></p></article>';
+  return '<article class="post"><p class="backlink"><a href="#/">← Back to home</a></p>' +
+    "<h1>" + esc(post.title) + "</h1>" +
+    '<div class="meta"><span class="chip">' + esc(post.category) + "</span>" + esc(post.date) + "</div>" +
+    post.html.replace(/href="library\.html"/g, 'href="#/library"') + "</article>";
+}
+
+function aboutHTML() {
+  return '<section class="about"><h1>About</h1>' +
+    "<p>I'm Jerry, a hydrogeology postgraduate. This site does two things: it hosts my essays, and it hosts the <strong>Library</strong> — a reference index for the profession. The goal: when a question comes up, search here and find out in seconds which book, and which chapter, to open.</p>" +
+    "<h2>How the Library works</h2><p>The Library is a <strong>chapter-level index</strong>, not a full-text collection. Each book is catalogued with its bibliographic record, topics, a summary, \"best for\" guidance, the full text of its contents pages, and its physical location. Find the entry, then go read the chapter. The index thickens as I study — chapter summaries, keywords, page numbers and reading notes get attached over time.</p>" +
+    "<h2>A caveat</h2><p>Many of the catalogued volumes date from 1970–1995. The classic theory and methods hold up; anything touching current regulation, standards, equipment or safety practice does not. Every entry carries a currency-risk rating and a pointer to the modern source to consult instead.</p></section>";
+}
+
+function bookMatches(b, terms) {
+  if (!terms.length) return true;
+  const hay = [
+    b.title, b.subtitle, b.volume, b.authors, b.editors, b.publisher,
+    b.knowledge_type, b.summary, b.best_for, b.better_source, b.isbn,
+    (b.topics || []).join(" "), (b.toc || []).join(" "),
+  ].join(" \n ").toLowerCase();
+  return terms.every((t) => hay.includes(t));
+}
+function riskLabel(n) {
+  return n >= 5 ? "currency risk: high" : n >= 4 ? "currency risk: elevated" : n >= 3 ? "currency risk: moderate" : "currency risk: low";
+}
+function renderBook(b, terms) {
+  const by = [b.authors, b.editors ? "eds. " + b.editors : ""].filter(Boolean).join(" · ");
+  const stars = "★".repeat(b.importance || 0) + "☆".repeat(Math.max(0, 5 - (b.importance || 0)));
+  const tocText = (b.toc || []).join("\n\n");
+  return '<div class="book" data-id="' + b.id + '">' +
+    '<div class="row1"><h3>' + highlight(b.title, terms) +
+    (b.volume ? ' <span class="vol">' + esc(b.volume) + "</span>" : "") +
+    (b.subtitle ? ' <span class="vol">— ' + esc(b.subtitle) + "</span>" : "") +
+    '</h3><span class="year">' + esc(b.year) + " · " + esc(b.publisher) + "</span></div>" +
+    '<div class="byline">' + highlight(by, terms) + "</div>" +
+    '<div class="badges">' +
+    (b.topics || []).map((t) => '<span class="badge">' + esc(t) + "</span>").join("") +
+    '<span class="badge risk">' + riskLabel(b.currency_risk) + "</span>" +
+    '<span class="badge loc">' + esc(b.location) + "</span></div>" +
+    '<div class="bestfor"><b>Best for:</b> ' + highlight(b.best_for, terms) + "</div>" +
+    '<div class="detail"><p>' + highlight(b.summary, terms) + "</p><dl>" +
+    "<dt>Importance</dt><dd>" + stars + "</dd>" +
+    "<dt>Type</dt><dd>" + esc(b.knowledge_type) + "</dd>" +
+    "<dt>Edition</dt><dd>" + esc(b.edition) + (b.first_pub_year ? " (first published " + b.first_pub_year + ")" : "") + "</dd>" +
+    (b.isbn ? '<dt>ISBN</dt><dd class="mono">' + esc(b.isbn) + "</dd>" : "") +
+    '<dt>Location</dt><dd class="mono">' + esc(b.location) + "</dd></dl>" +
+    (b.currentness_note ? '<div class="note">⚠ ' + esc(b.currentness_note) + "</div>" : "") +
+    (b.better_source ? "<p><b>Newer / better edition:</b> " + esc(b.better_source) + "</p>" : "") +
+    ((b.sources || []).length
+      ? "<p><b>Links:</b></p><ul class='srcs'>" +
+        b.sources.map((s) => '<li><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + "</a> — " + esc(s.supports) + "</li>").join("") + "</ul>"
+      : "") +
+    (tocText ? '<div class="toc-box">' + highlight(tocText, terms) + '</div><a class="toc-more">Show full contents ▾</a>' : "") +
+    "</div></div>";
+}
+function libraryHTML() {
+  const s = LIBRARY.stats;
+  const statHTML = [["physical books", s.books], ["title families", s.works], ["contents pages", s.toc_pages], ["topics", s.topics]]
+    .map(([label, n]) => '<div class="stat"><b>' + n + "</b><span>" + label + "</span></div>").join("");
+  return '<section class="lib-head"><h1>The Hydrogeology Library</h1>' +
+    '<p>An index that answers "which book, which chapter?". Search covers titles, authors, topics, summaries and the full text of every photographed contents page. Click any entry for details — including a currency warning and the better modern edition where one exists.</p>' +
+    '<div class="stats">' + statHTML + "</div></section>" +
+    '<section class="searchbar"><input id="q" type="search" placeholder="Search: pumping test / drainage / hydrochemistry / Freeze…" autocomplete="off">' +
+    '<div id="topic-chips" class="topic-chips"></div><div id="result-note" class="result-note"></div></section>' +
+    '<section id="book-list" class="book-list"></section>';
+}
+function renderLibraryList() {
+  const listEl = document.getElementById("book-list");
+  const noteEl = document.getElementById("result-note");
+  if (!listEl) return;
+  const terms = libState.q.toLowerCase().split(/\s+/).filter(Boolean);
+  let books = LIBRARY.books.filter((b) => bookMatches(b, terms));
+  if (libState.topic) books = books.filter((b) => (b.topics || []).includes(libState.topic));
+  noteEl.textContent = books.length + (books.length === 1 ? " book" : " books") +
+    (terms.length || libState.topic ? " (of " + LIBRARY.books.length + ")" : "") +
+    " · sorted by reference value · click an entry for details";
+  listEl.innerHTML = books.map((b) => renderBook(b, terms)).join("") ||
+    "<p style='color:var(--ink-faint);padding:20px 4px'>No matches. Try another keyword — search covers titles, authors, topics, summaries and the full text of every contents page.</p>";
+}
+function initLibrary() {
+  const q = document.getElementById("q");
+  const chipsEl = document.getElementById("topic-chips");
+  const counts = {};
+  for (const b of LIBRARY.books) for (const t of b.topics || []) counts[t] = (counts[t] || 0) + 1;
+  const topics = LIBRARY.topics.map((t) => t.name).filter((t) => counts[t]).sort((a, b) => counts[b] - counts[a]);
+  chipsEl.innerHTML = topics.map((t) => '<button data-topic="' + esc(t) + '">' + esc(t) + " " + counts[t] + "</button>").join("");
+  chipsEl.addEventListener("click", (e) => {
+    const btn = e.target.closest("button");
+    if (!btn) return;
+    const t = btn.getAttribute("data-topic");
+    libState.topic = libState.topic === t ? null : t;
+    for (const b of chipsEl.querySelectorAll("button"))
+      b.classList.toggle("on", b.getAttribute("data-topic") === libState.topic);
+    renderLibraryList();
+  });
+  q.value = libState.q;
+  let timer = null;
+  q.addEventListener("input", () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { libState.q = q.value.trim(); renderLibraryList(); }, 150);
+  });
+  document.getElementById("book-list").addEventListener("click", (e) => {
+    const more = e.target.closest(".toc-more");
+    if (more) {
+      const box = more.parentElement.querySelector(".toc-box");
+      box.classList.toggle("full");
+      more.textContent = box.classList.contains("full") ? "Collapse contents ▴" : "Show full contents ▾";
+      e.stopPropagation();
+      return;
+    }
+    if (e.target.closest("a")) return;
+    const card = e.target.closest(".book");
+    if (card) card.classList.toggle("open");
+  });
+  renderLibraryList();
+}
+
+function route() {
+  const hash = location.hash || "#/";
+  let page = "home";
+  if (hash.startsWith("#/post/")) {
+    page = "post";
+    view.innerHTML = postHTML(decodeURIComponent(hash.slice(7)));
+    document.title = "Post · Aquifer Notes";
+  } else if (hash === "#/library") {
+    page = "library";
+    view.innerHTML = libraryHTML();
+    initLibrary();
+    document.title = "Library · Aquifer Notes";
+  } else if (hash === "#/about") {
+    page = "about";
+    view.innerHTML = aboutHTML();
+    document.title = "About · Aquifer Notes";
+  } else {
+    view.innerHTML = homeHTML();
+    document.title = "Aquifer Notes";
+  }
+  for (const a of document.querySelectorAll("nav.main a"))
+    a.classList.toggle("active", a.getAttribute("data-nav") === page);
+  window.scrollTo(0, 0);
+}
+window.addEventListener("hashchange", route);
+route();
+</script>
