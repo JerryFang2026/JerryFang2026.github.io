@@ -109,8 +109,31 @@ function bookMatches(b, terms) {
     b.title, b.subtitle, b.volume, b.authors, b.editors, b.publisher,
     b.knowledge_type, b.summary, b.best_for, b.better_source, b.isbn,
     (b.topics || []).join(" "), (b.toc || []).join(" "),
+    flatContents(b).map((e) => e.t).join(" "),
   ].join(" \n ").toLowerCase();
   return terms.every((t) => hay.includes(t));
+}
+
+function flatContents(b) {
+  return (b.contents || []).flatMap((pg) => pg.entries);
+}
+
+function contentHits(b, terms) {
+  if (!terms.length) return [];
+  return flatContents(b).filter((e) => {
+    const t = e.t.toLowerCase();
+    return terms.some((x) => t.includes(x));
+  });
+}
+
+function tocRows(list, terms) {
+  return list
+    .map(
+      (e) =>
+        '<div class="row l' + (e.l || 1) + '"><span class="t">' + highlight(e.t, terms) +
+        '</span><span class="leader"></span><span class="pg">' + (e.p == null ? "" : esc(e.p)) + "</span></div>"
+    )
+    .join("");
 }
 
 function riskLabel(n) {
@@ -121,6 +144,14 @@ function renderBook(b, terms) {
   const by = [b.authors, b.editors ? "eds. " + b.editors : ""].filter(Boolean).join(" · ");
   const stars = "★".repeat(b.importance || 0) + "☆".repeat(Math.max(0, 5 - (b.importance || 0)));
   const tocText = (b.toc || []).join("\n\n");
+  const flat = flatContents(b);
+  const hits = contentHits(b, terms);
+  const hitsHTML = hits.length
+    ? '<div class="hits"><b>' + hits.length + " matching section" + (hits.length > 1 ? "s" : "") + ":</b>" +
+      tocRows(hits.slice(0, 6), terms) +
+      (hits.length > 6 ? '<div class="morehits">…and ' + (hits.length - 6) + " more in the full contents below</div>" : "") +
+      "</div>"
+    : "";
   return (
     '<div class="book" data-id="' + b.id + '">' +
     '<div class="row1"><h3>' + highlight(b.title, terms) +
@@ -134,6 +165,7 @@ function renderBook(b, terms) {
     '<span class="badge loc">' + esc(b.location) + "</span>" +
     "</div>" +
     '<div class="bestfor"><b>Best for:</b> ' + highlight(b.best_for, terms) + "</div>" +
+    hitsHTML +
     '<div class="detail">' +
     "<p>" + highlight(b.summary, terms) + "</p>" +
     "<dl>" +
@@ -150,7 +182,10 @@ function renderBook(b, terms) {
         b.sources.map((s) => '<li><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + "</a> — " + esc(s.supports) + "</li>").join("") +
         "</ul>"
       : "") +
-    (tocText
+    (flat.length
+      ? "<p><b>Contents (from the photographed pages):</b></p>" +
+        '<div class="toc-list">' + tocRows(flat, terms) + "</div>"
+      : tocText
       ? '<div class="toc-box">' + highlight(tocText, terms) + "</div>" +
         '<a class="toc-more">Show full contents ▾</a>'
       : "") +
@@ -165,6 +200,8 @@ function renderLibrary() {
   const terms = libState.q.toLowerCase().split(/\s+/).filter(Boolean);
   let books = LIBRARY.books.filter((b) => bookMatches(b, terms));
   if (libState.topic) books = books.filter((b) => (b.topics || []).includes(libState.topic));
+  if (terms.length)
+    books = books.slice().sort((a, b2) => contentHits(b2, terms).length - contentHits(a, terms).length);
   noteEl.textContent =
     books.length + (books.length === 1 ? " book" : " books") +
     (terms.length || libState.topic ? " (of " + LIBRARY.books.length + ")" : "") +

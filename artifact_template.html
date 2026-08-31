@@ -129,6 +129,18 @@ article.post code { font-family: var(--mono); font-size: .9em; background: var(-
 .badge.loc { background: transparent; border: 1px dashed var(--line); color: var(--ink-faint); font-family: var(--mono); font-size: 11px; }
 .book .bestfor { font-size: 14px; color: var(--ink-soft); margin-top: 8px; }
 .book .bestfor b { color: var(--ink); font-weight: 600; }
+.hits { margin-top: 10px; font-size: 13.5px; background: var(--accent-soft); border-radius: 8px; padding: 8px 12px; }
+.hits > b { color: var(--accent); }
+.morehits { color: var(--ink-faint); font-size: 12.5px; margin-top: 3px; }
+.toc-list { margin-top: 6px; border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; max-height: 320px; overflow-y: auto; font-size: 13.5px; background: var(--bg); }
+.hits .row, .toc-list .row { display: flex; align-items: baseline; gap: 6px; padding: 1px 0; }
+.row .t { min-width: 0; }
+.row .leader { flex: 1 1 12px; border-bottom: 1px dotted var(--ink-faint); opacity: .45; }
+.row .pg { color: var(--ink-soft); font-family: var(--mono); font-size: 12px; white-space: nowrap; }
+.toc-list .row.l1 { font-weight: 600; margin-top: 6px; }
+.toc-list .row.l1:first-child { margin-top: 0; }
+.toc-list .row.l2 { padding-left: 16px; }
+.toc-list .row.l3 { padding-left: 32px; color: var(--ink-soft); }
 .book .detail { display: none; margin-top: 14px; border-top: 1px dashed var(--line); padding-top: 14px; font-size: 14px; }
 .book.open .detail { display: block; }
 .detail dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; }
@@ -256,8 +268,28 @@ function bookMatches(b, terms) {
     b.title, b.subtitle, b.volume, b.authors, b.editors, b.publisher,
     b.knowledge_type, b.summary, b.best_for, b.better_source, b.isbn,
     (b.topics || []).join(" "), (b.toc || []).join(" "),
+    flatContents(b).map((e) => e.t).join(" "),
   ].join(" \n ").toLowerCase();
   return terms.every((t) => hay.includes(t));
+}
+function flatContents(b) {
+  return (b.contents || []).flatMap((pg) => pg.entries);
+}
+function contentHits(b, terms) {
+  if (!terms.length) return [];
+  return flatContents(b).filter((e) => {
+    const t = e.t.toLowerCase();
+    return terms.some((x) => t.includes(x));
+  });
+}
+function tocRows(list, terms) {
+  return list
+    .map(
+      (e) =>
+        '<div class="row l' + (e.l || 1) + '"><span class="t">' + highlight(e.t, terms) +
+        '</span><span class="leader"></span><span class="pg">' + (e.p == null ? "" : esc(e.p)) + "</span></div>"
+    )
+    .join("");
 }
 function riskLabel(n) {
   return n >= 5 ? "currency risk: high" : n >= 4 ? "currency risk: elevated" : n >= 3 ? "currency risk: moderate" : "currency risk: low";
@@ -266,6 +298,14 @@ function renderBook(b, terms) {
   const by = [b.authors, b.editors ? "eds. " + b.editors : ""].filter(Boolean).join(" · ");
   const stars = "★".repeat(b.importance || 0) + "☆".repeat(Math.max(0, 5 - (b.importance || 0)));
   const tocText = (b.toc || []).join("\n\n");
+  const flat = flatContents(b);
+  const hits = contentHits(b, terms);
+  const hitsHTML = hits.length
+    ? '<div class="hits"><b>' + hits.length + " matching section" + (hits.length > 1 ? "s" : "") + ":</b>" +
+      tocRows(hits.slice(0, 6), terms) +
+      (hits.length > 6 ? '<div class="morehits">…and ' + (hits.length - 6) + " more in the full contents below</div>" : "") +
+      "</div>"
+    : "";
   return '<div class="book" data-id="' + b.id + '">' +
     '<div class="row1"><h3>' + highlight(b.title, terms) +
     (b.volume ? ' <span class="vol">' + esc(b.volume) + "</span>" : "") +
@@ -277,6 +317,7 @@ function renderBook(b, terms) {
     '<span class="badge risk">' + riskLabel(b.currency_risk) + "</span>" +
     '<span class="badge loc">' + esc(b.location) + "</span></div>" +
     '<div class="bestfor"><b>Best for:</b> ' + highlight(b.best_for, terms) + "</div>" +
+    hitsHTML +
     '<div class="detail"><p>' + highlight(b.summary, terms) + "</p><dl>" +
     "<dt>Importance</dt><dd>" + stars + "</dd>" +
     "<dt>Type</dt><dd>" + esc(b.knowledge_type) + "</dd>" +
@@ -289,7 +330,12 @@ function renderBook(b, terms) {
       ? "<p><b>Links:</b></p><ul class='srcs'>" +
         b.sources.map((s) => '<li><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + "</a> — " + esc(s.supports) + "</li>").join("") + "</ul>"
       : "") +
-    (tocText ? '<div class="toc-box">' + highlight(tocText, terms) + '</div><a class="toc-more">Show full contents ▾</a>' : "") +
+    (flat.length
+      ? "<p><b>Contents (from the photographed pages):</b></p>" +
+        '<div class="toc-list">' + tocRows(flat, terms) + "</div>"
+      : tocText
+      ? '<div class="toc-box">' + highlight(tocText, terms) + '</div><a class="toc-more">Show full contents ▾</a>'
+      : "") +
     "</div></div>";
 }
 function libraryHTML() {
@@ -310,6 +356,8 @@ function renderLibraryList() {
   const terms = libState.q.toLowerCase().split(/\s+/).filter(Boolean);
   let books = LIBRARY.books.filter((b) => bookMatches(b, terms));
   if (libState.topic) books = books.filter((b) => (b.topics || []).includes(libState.topic));
+  if (terms.length)
+    books = books.slice().sort((a, b2) => contentHits(b2, terms).length - contentHits(a, terms).length);
   noteEl.textContent = books.length + (books.length === 1 ? " book" : " books") +
     (terms.length || libState.topic ? " (of " + LIBRARY.books.length + ")" : "") +
     " · sorted by reference value · click an entry for details";

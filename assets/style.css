@@ -151,6 +151,18 @@ article.post code { font-family: var(--mono); font-size: 0.9em; background: var(
 .book .bestfor { font-size: 14px; color: var(--ink-soft); margin-top: 8px; }
 .book .bestfor b { color: var(--ink); font-weight: 600; }
 
+.hits { margin-top: 10px; font-size: 13.5px; background: var(--accent-soft); border-radius: 8px; padding: 8px 12px; }
+.hits > b { color: var(--accent); }
+.morehits { color: var(--ink-faint); font-size: 12.5px; margin-top: 3px; }
+.toc-list { margin-top: 6px; border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; max-height: 320px; overflow-y: auto; font-size: 13.5px; background: var(--bg); }
+.hits .row, .toc-list .row { display: flex; align-items: baseline; gap: 6px; padding: 1px 0; }
+.row .t { min-width: 0; }
+.row .leader { flex: 1 1 12px; border-bottom: 1px dotted var(--ink-faint); opacity: .45; }
+.row .pg { color: var(--ink-soft); font-family: var(--mono); font-size: 12px; white-space: nowrap; }
+.toc-list .row.l1 { font-weight: 600; margin-top: 6px; }
+.toc-list .row.l1:first-child { margin-top: 0; }
+.toc-list .row.l2 { padding-left: 16px; }
+.toc-list .row.l3 { padding-left: 32px; color: var(--ink-soft); }
 .book .detail { display: none; margin-top: 14px; border-top: 1px dashed var(--line); padding-top: 14px; font-size: 14px; }
 .book.open .detail { display: block; }
 .detail dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; }

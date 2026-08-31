@@ -78,6 +78,50 @@ def load_book_i18n() -> dict[str, dict]:
     return {}
 
 
+def load_structured_toc() -> dict[str, list[dict]]:
+    """Structured TOC entries per book: [{img, entries: [{l, t, p}]}], photo order.
+
+    Source: toc_entries_deepseek.jsonl (DeepSeek extraction), overridden per page
+    by toc_entries_fixes.jsonl (manual/vision QA). Near-duplicate photos of the
+    same contents page are collapsed to the richer capture.
+    """
+    src = CATALOG / "toc_entries_deepseek.jsonl"
+    if not src.exists():
+        return {}
+    rows = [json.loads(l) for l in src.read_text(encoding="utf-8").splitlines() if l.strip()]
+
+    fixes_path = CATALOG / "toc_entries_fixes.jsonl"
+    if fixes_path.exists():
+        fixes = {
+            json.loads(l)["toc_page_id"]: json.loads(l)
+            for l in fixes_path.read_text(encoding="utf-8").splitlines() if l.strip()
+        }
+        rows = [fixes.get(r["toc_page_id"], r) for r in rows]
+
+    rows.sort(key=lambda r: r["source_file"])
+    by_book: dict[str, list[dict]] = {}
+    for r in rows:
+        entries = [
+            {"l": e.get("level", 1), "t": clean_text(str(e.get("title", ""))), "p": e.get("page")}
+            for e in r.get("entries", [])
+            if clean_text(str(e.get("title", "")))
+        ]
+        if not entries:
+            continue
+        img = r["source_file"].replace(".HEIC", "")
+        pages = by_book.setdefault(r["book_id"], [])
+        if pages:
+            prev = {(e["t"], str(e["p"])) for e in pages[-1]["entries"]}
+            cur = {(e["t"], str(e["p"])) for e in entries}
+            overlap = len(prev & cur) / max(1, min(len(prev), len(cur)))
+            if overlap > 0.7:  # duplicate photo of the same page — keep richer capture
+                if len(entries) > len(pages[-1]["entries"]):
+                    pages[-1] = {"img": img, "entries": entries}
+                continue
+        pages.append({"img": img, "entries": entries})
+    return by_book
+
+
 def build_library() -> dict:
     books = read_jsonl(CATALOG / "books.jsonl")
     toc_pages = read_jsonl(CATALOG / "toc_pages.jsonl")
@@ -109,6 +153,7 @@ def build_library() -> dict:
         )
 
     i18n = load_book_i18n()
+    structured_toc = load_structured_toc()
 
     out_books = []
     for b in books:
@@ -144,6 +189,7 @@ def build_library() -> dict:
                 "photo_count": b.get("photo_count", 0),
                 "ref_value": b.get("reference_value_100", 0),
                 "toc": toc_by_book.get(bid, []),
+                "contents": structured_toc.get(bid, []),
                 "sources": book_sources,
             }
         )
