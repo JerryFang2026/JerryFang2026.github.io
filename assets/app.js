@@ -98,6 +98,7 @@ function renderPost() {
     "<h1>" + esc(post.title) + "</h1>" +
     '<div class="meta"><span class="chip">' + esc(post.category) + "</span>" + esc(post.date) + "</div>" +
     post.html;
+  if (window.mountComments) mountComments("post:" + post.id, "Comments");
 }
 
 /* ------------------------------------------------------------- library */
@@ -274,4 +275,5 @@ document.addEventListener("DOMContentLoaded", () => {
   if (page === "home") renderPostList();
   if (page === "post") renderPost();
   if (page === "library") initLibrary();
+  if (page === "about" && window.mountComments) mountComments("guestbook", "Guestbook");
 });
