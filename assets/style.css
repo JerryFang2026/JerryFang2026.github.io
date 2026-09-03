@@ -193,6 +193,12 @@ html[data-theme="dark"] mark { background: #6b5618; color: #ffe9a8; }
 .about h2 { font-family: var(--serif); font-size: 20px; margin: 30px 0 10px; }
 .about p { margin: 12px 0; color: var(--ink); }
 
+/* ---------------------------------------------------------------- comments */
+.comments { max-width: 720px; margin: 0 auto; padding: 0 0 70px; }
+.comments h2 { font-family: var(--serif); font-size: 22px; margin: 0 0 14px; padding-top: 28px; border-top: 1px solid var(--line); }
+.comments h3 { font-size: 14px; color: var(--ink-faint); font-weight: 500; margin: 22px 0 8px; text-transform: uppercase; letter-spacing: .04em; }
+.comments-provider { margin-bottom: 10px; }
+
 /* ---------------------------------------------------------------- footer */
 .site-footer { border-top: 1px solid var(--line); padding: 26px 0 40px; color: var(--ink-faint); font-size: 13px; }
 
