@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "在新标签页打开链接（自用）",
+  "version": "1.1",
+  "description": "普通左键点击网页链接时在新标签页打开。自己写的：不联网，不读取页面内容。点工具栏图标可在当前网站上关闭。",
+  "permissions": ["storage"],
+  "action": { "default_title": "在新标签页打开链接：点击在本站开 / 关" },
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "exclude_matches": [
+        "*://github.com/*",
+        "*://*.github.com/*",
+        "*://accounts.google.com/*",
+        "*://myaccount.google.com/*",
+        "*://login.microsoftonline.com/*",
+        "*://login.microsoft.com/*",
+        "*://login.live.com/*",
+        "*://appleid.apple.com/*",
+        "*://*.paypal.com/*",
+        "*://*.okta.com/*",
+        "*://*.auth0.com/*",
+        "*://*/login*",
+        "*://*/logout*",
+        "*://*/signin*",
+        "*://*/sign-in*",
+        "*://*/sign_in*",
+        "*://*/oauth*",
+        "*://*/auth/*",
+        "*://*/authorize*",
+        "*://*/session*",
+        "*://*/sso*",
+        "*://*/saml*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

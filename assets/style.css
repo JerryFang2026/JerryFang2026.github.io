@@ -211,3 +211,7 @@ html[data-theme="dark"] mark { background: #6b5618; color: #ffe9a8; }
   .detail dl { grid-template-columns: 1fr; }
   .detail dt { margin-top: 6px; }
 }
+
+/* code blocks in posts (``` fences, see build.py) */
+article.post pre { font-family: var(--mono); font-size: 0.85em; line-height: 1.55; background: var(--accent-soft); padding: 12px 14px; border-radius: 6px; overflow-x: auto; white-space: pre; margin: 1em 0; }
+article.post pre code { background: none; padding: 0; font-size: inherit; }
