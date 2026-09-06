@@ -14,6 +14,7 @@ site/
 ├─ assets/app.js         前端逻辑；站名/副标题在文件开头 SITE 处改
 ├─ posts/*.md            文章源文件（英文，Markdown + frontmatter）
 ├─ posts/_zh_drafts/     中文草稿备份（不参与构建，不发布）
+├─ extensions/           分享出去的小工具源码（如 open-in-new-tab Chrome 扩展）
 ├─ i18n/books_en.json    26 册书编目注释的英文翻译（构建时合并）
 ├─ data/                 生成的数据（不要手改）
 ├─ build.py              构建：posts/*.md + ../outputs 编目数据 + i18n → data/*.js
@@ -34,7 +35,7 @@ category: Essays
 summary: One-line summary shown in the list.
 ---
 
-Body text. Supports # headings, **bold**, [links](url), - lists, > quotes.
+Body text. Supports # headings, **bold**, [links](url), - lists, > quotes, and ``` fenced code blocks.
 ```
 
 2. 在 site 目录运行 `python build.py`。完成。

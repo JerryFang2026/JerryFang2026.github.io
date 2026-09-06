@@ -266,8 +266,29 @@ def md_to_html(md: str) -> str:
             html.append(f"</{list_mode}>")
             list_mode = None
 
+    in_code = False
+    code_lines: list[str] = []
+
+    def flush_code():
+        nonlocal in_code
+        escaped = "\n".join(code_lines).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+        html.append("<pre><code>" + escaped + "</code></pre>")
+        code_lines.clear()
+        in_code = False
+
     for line in lines:
         stripped = line.strip()
+        if stripped.startswith("```"):  # fenced code block: verbatim, no inline markdown
+            flush_para()
+            close_list()
+            if in_code:
+                flush_code()
+            else:
+                in_code = True
+            continue
+        if in_code:
+            code_lines.append(line)
+            continue
         if not stripped:
             flush_para()
             close_list()
@@ -311,6 +332,8 @@ def md_to_html(md: str) -> str:
 
     flush_para()
     close_list()
+    if in_code:
+        flush_code()
     return "\n".join(html)
 
 
