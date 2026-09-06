@@ -98,7 +98,35 @@ function renderPost() {
     "<h1>" + esc(post.title) + "</h1>" +
     '<div class="meta"><span class="chip">' + esc(post.category) + "</span>" + esc(post.date) + "</div>" +
     post.html;
-  if (window.mountComments) mountComments("post:" + post.id, "Comments");
+  // Mount the comment widget once; a later re-render (see refreshData) must not add a second copy.
+  if (window.mountComments && !renderPost.commentsMounted) {
+    renderPost.commentsMounted = true;
+    mountComments("post:" + post.id, "Comments");
+  }
+}
+
+/* ------------------------------------------------------------- freshness */
+/* GitHub Pages tells browsers to keep data/*.js for 10 minutes, so a reader who
+   opened the site shortly before a new post went up may be shown the old list,
+   and a shared link to a brand-new post can land on "Post not found". After the
+   first paint we ask the server once more, bypassing the browser cache (a cheap
+   conditional request: 304 if nothing changed), and re-render only when the
+   data really differs. Any failure is ignored and the page keeps what it has. */
+function refreshData(file, varName, onChange) {
+  const tag = document.querySelector('script[src$="' + file + '"]');
+  if (!tag || !window.fetch) return; // e.g. the single-file artifact build inlines its data
+  fetch(tag.getAttribute("src"), { cache: "no-cache" })
+    .then((r) => (r.ok ? r.text() : Promise.reject(r.status)))
+    .then((text) => {
+      const start = text.indexOf("=");
+      const end = text.lastIndexOf(";");
+      if (start < 0 || end < start) return;
+      const fresh = JSON.parse(text.slice(start + 1, end));
+      if (JSON.stringify(fresh) === JSON.stringify(window[varName])) return;
+      window[varName] = fresh;
+      onChange();
+    })
+    .catch(() => {});
 }
 
 /* ------------------------------------------------------------- library */
@@ -211,11 +239,12 @@ function renderLibrary() {
     "<p style='color:var(--ink-faint);padding:20px 4px'>No matches. Try another keyword — search covers titles, authors, topics, summaries and the full text of every contents page.</p>";
 }
 
-function initLibrary() {
-  const q = document.getElementById("q");
+/* Stats row and topic chips. Safe to call again after the data is refreshed:
+   it only rewrites innerHTML, the click handler lives on the container. */
+function renderLibraryHead() {
   const chipsEl = document.getElementById("topic-chips");
   const statsEl = document.getElementById("stats");
-  if (!q || !window.LIBRARY) return;
+  if (!chipsEl || !statsEl || !window.LIBRARY) return;
 
   const s = LIBRARY.stats;
   statsEl.innerHTML = [
@@ -229,8 +258,16 @@ function initLibrary() {
     .map((t) => t.name).filter((t) => counts[t])
     .sort((a, b2) => counts[b2] - counts[a]);
   chipsEl.innerHTML = topics
-    .map((t) => '<button data-topic="' + esc(t) + '">' + esc(t) + " " + counts[t] + "</button>")
+    .map((t) => '<button data-topic="' + esc(t) + '"' + (t === libState.topic ? ' class="on"' : "") + ">" + esc(t) + " " + counts[t] + "</button>")
     .join("");
+}
+
+function initLibrary() {
+  const q = document.getElementById("q");
+  const chipsEl = document.getElementById("topic-chips");
+  if (!q || !window.LIBRARY) return;
+
+  renderLibraryHead();
   chipsEl.addEventListener("click", (e) => {
     const btn = e.target.closest("button");
     if (!btn) return;
@@ -272,8 +309,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const page = document.body.getAttribute("data-page");
   renderHeader(page);
   renderFooter();
-  if (page === "home") renderPostList();
-  if (page === "post") renderPost();
-  if (page === "library") initLibrary();
+  if (page === "home") {
+    renderPostList();
+    refreshData("data/posts.js", "POSTS", renderPostList);
+  }
+  if (page === "post") {
+    renderPost();
+    refreshData("data/posts.js", "POSTS", renderPost);
+  }
+  if (page === "library") {
+    initLibrary();
+    refreshData("data/books.js", "LIBRARY", () => { renderLibraryHead(); renderLibrary(); });
+  }
   if (page === "about" && window.mountComments) mountComments("guestbook", "Guestbook");
 });

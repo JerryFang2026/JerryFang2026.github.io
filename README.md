@@ -39,6 +39,8 @@ Body text. Supports # headings, **bold**, [links](url), - lists, > quotes.
 
 2. 在 site 目录运行 `python build.py`。完成。
 
+发布后读者不需要强制刷新：页面打开时会自动向服务器核对一次文章列表是否最新（`assets/app.js` 里的 `refreshData`），旧了就原地换成新的。资料库页面同理。
+
 ## 资料库加书
 
 新一批书扫描 → 编目（数据进 `../outputs/`）→ 给新书补英文注释进 `i18n/books_en.json` → `python build.py`。
