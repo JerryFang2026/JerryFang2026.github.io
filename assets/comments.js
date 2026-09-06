@@ -10,7 +10,7 @@ window.COMMENTS = {
     lang: "en",
   },
   waline: {
-    serverURL: "",
+    serverURL: "https://waline-nu-sand.vercel.app",
     lang: "en",
   },
 };
