@@ -21,6 +21,10 @@ from pathlib import Path
 
 SITE_DIR = Path(__file__).resolve().parent
 CATALOG = SITE_DIR.parent / "outputs" / "book_catalog_20260809" / "data"
+# Later batches: (data dir, structured-TOC file). Each has books.jsonl, sources.jsonl, topics_new.json, merge_map.json.
+EXTRA_CATALOGS = [
+    (SITE_DIR.parent / "outputs" / "book_catalog_20260908" / "data", "toc_entries_vision.jsonl"),
+]
 POSTS_DIR = SITE_DIR / "posts"
 DATA_OUT = SITE_DIR / "data"
 
@@ -71,6 +75,15 @@ TOPIC_EN = {
 I18N_PATH = Path(__file__).resolve().parent / "i18n" / "books_en.json"
 
 
+def shelf_location(raw: str) -> str:
+    """All books live in the MSc classroom (Room G15, University of Birmingham).
+    Earlier catalog data guessed box numbers; keep only the capture order."""
+    import re as _re
+    m = _re.search(r"capture order (\d+)", raw or "")
+    order = f" · photo sequence {m.group(1)}" if m else ""
+    return "Room G15 (MSc room), University of Birmingham" + order
+
+
 def load_book_i18n() -> dict[str, dict]:
     if I18N_PATH.exists():
         rows = json.loads(I18N_PATH.read_text(encoding="utf-8"))
@@ -78,19 +91,19 @@ def load_book_i18n() -> dict[str, dict]:
     return {}
 
 
-def load_structured_toc() -> dict[str, list[dict]]:
+def load_structured_toc(catalog: Path = CATALOG, toc_file: str = "toc_entries_deepseek.jsonl") -> dict[str, list[dict]]:
     """Structured TOC entries per book: [{img, entries: [{l, t, p}]}], photo order.
 
-    Source: toc_entries_deepseek.jsonl (DeepSeek extraction), overridden per page
-    by toc_entries_fixes.jsonl (manual/vision QA). Near-duplicate photos of the
-    same contents page are collapsed to the richer capture.
+    Source: the batch's structured-TOC file (DeepSeek extraction), overridden per
+    page by toc_entries_fixes.jsonl (manual/vision QA). Near-duplicate photos of
+    the same contents page are collapsed to the richer capture.
     """
-    src = CATALOG / "toc_entries_deepseek.jsonl"
+    src = catalog / toc_file
     if not src.exists():
         return {}
     rows = [json.loads(l) for l in src.read_text(encoding="utf-8").splitlines() if l.strip()]
 
-    fixes_path = CATALOG / "toc_entries_fixes.jsonl"
+    fixes_path = catalog / "toc_entries_fixes.jsonl"
     if fixes_path.exists():
         fixes = {
             json.loads(l)["toc_page_id"]: json.loads(l)
@@ -155,6 +168,32 @@ def build_library() -> dict:
     i18n = load_book_i18n()
     structured_toc = load_structured_toc()
 
+    # Later batches: append their books/sources/topics; enrich batch-1 records
+    # with contents photos of books that turned out to be duplicates.
+    for cat_dir, toc_file in EXTRA_CATALOGS:
+        if not (cat_dir / "books.jsonl").exists():
+            continue
+        books.extend(read_jsonl(cat_dir / "books.jsonl"))
+        for src in read_jsonl(cat_dir / "sources.jsonl"):
+            sources_by_book.setdefault(src["book_id"], []).append(
+                {"title": src.get("title", ""), "url": src.get("url", ""), "type": src.get("source_type", ""), "supports": src.get("supports", "")}
+            )
+        if (cat_dir / "topics_new.json").exists():
+            topics.extend(json.loads((cat_dir / "topics_new.json").read_text(encoding="utf-8")))
+        extra_toc = load_structured_toc(cat_dir, toc_file)
+        merge_map = json.loads((cat_dir / "merge_map.json").read_text(encoding="utf-8")) if (cat_dir / "merge_map.json").exists() else {}
+        local_ids = {b.get("batch_local_id"): b["book_id"] for b in books if b.get("batch_local_id")}
+        for local_id, pages in extra_toc.items():
+            target = merge_map.get(local_id) or local_ids.get(local_id)
+            if not target:
+                continue
+            existing = structured_toc.setdefault(target, [])
+            for pg in pages:
+                cur = {(e["t"], str(e["p"])) for e in pg["entries"]}
+                dup = any(len(cur & {(e["t"], str(e["p"])) for e in old["entries"]}) / max(1, min(len(cur), len(old["entries"]))) > 0.7 for old in existing)
+                if not dup:
+                    existing.append(pg)
+
     out_books = []
     for b in books:
         bid = b["book_id"]
@@ -185,7 +224,7 @@ def build_library() -> dict:
                 "currency_risk": b.get("currency_risk", 0),
                 "currentness_note": tr.get("currentness_note_en") or b.get("currentness_note", ""),
                 "better_source": tr.get("better_source_en") or b.get("latest_or_better_source", ""),
-                "location": b.get("physical_location", ""),
+                "location": shelf_location(b.get("physical_location", "")),
                 "photo_count": b.get("photo_count", 0),
                 "ref_value": b.get("reference_value_100", 0),
                 "toc": toc_by_book.get(bid, []),
@@ -210,7 +249,7 @@ def build_library() -> dict:
         "stats": {
             "books": len(out_books),
             "works": len({b.get("work_id") for b in books}),
-            "toc_pages": sum(len(v) for v in toc_by_book.values()),
+            "toc_pages": sum(len(b["contents"]) for b in out_books),
             "topics": len(out_topics),
         },
         "topics": out_topics,
