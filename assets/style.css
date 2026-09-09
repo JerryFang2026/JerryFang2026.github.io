@@ -159,6 +159,7 @@ article.post code { font-family: var(--mono); font-size: 0.9em; background: var(
 .row .t { min-width: 0; }
 .row .leader { flex: 1 1 12px; border-bottom: 1px dotted var(--ink-faint); opacity: .45; }
 .row .pg { color: var(--ink-soft); font-family: var(--mono); font-size: 12px; white-space: nowrap; }
+.row .pg.unv { color: #b45309; border-bottom: 1px dotted currentColor; cursor: help; }
 .toc-list .row.l1 { font-weight: 600; margin-top: 6px; }
 .toc-list .row.l1:first-child { margin-top: 0; }
 .toc-list .row.l2 { padding-left: 16px; }

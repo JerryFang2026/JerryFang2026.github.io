@@ -165,7 +165,7 @@ function tocRows(list, terms) {
     .map(
       (e) =>
         '<div class="row l' + (e.l || 1) + '"><span class="t">' + highlight(e.t, terms) +
-        '</span><span class="leader"></span><span class="pg">' + (e.p == null ? "" : esc(e.p)) + "</span></div>"
+        '</span><span class="leader"></span><span class="pg' + (e.u ? ' unv" title="Page number not yet checked against the photograph' : '') + '">' + (e.p == null ? "" : esc(e.p)) + (e.u && e.p != null ? "?" : "") + "</span></div>"
     )
     .join("");
 }
