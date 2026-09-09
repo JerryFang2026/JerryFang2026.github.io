@@ -112,11 +112,15 @@ def load_structured_toc(catalog: Path = CATALOG, toc_file: str = "toc_entries_de
         }
         rows = [fixes.get(r["toc_page_id"], r) for r in rows]
 
+    unverified_path = catalog / "toc_pages_unverified.json"
+    unverified = set(json.loads(unverified_path.read_text(encoding="utf-8")).get("source_files", [])) if unverified_path.exists() else set()
+
     rows.sort(key=lambda r: r["source_file"])
     by_book: dict[str, list[dict]] = {}
     for r in rows:
+        unv = r["source_file"] in unverified and r.get("model") != "fable-visual-qa"
         entries = [
-            {"l": e.get("level", 1), "t": clean_text(str(e.get("title", ""))), "p": e.get("page")}
+            {"l": e.get("level", 1), "t": clean_text(str(e.get("title", ""))), "p": e.get("page"), **({"u": 1} if unv else {})}
             for e in r.get("entries", [])
             if clean_text(str(e.get("title", "")))
         ]
