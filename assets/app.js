@@ -149,10 +149,15 @@ function flatContents(b) {
 
 function contentHits(b, terms) {
   if (!terms.length) return [];
-  return flatContents(b).filter((e) => {
-    const t = e.t.toLowerCase();
-    return terms.some((x) => t.includes(x));
-  });
+  // short words ("as", "of") only count when nothing longer was typed; sections that
+  // contain every term come first
+  const strong = terms.filter((x) => x.length >= 3);
+  const use = strong.length ? strong : terms;
+  return flatContents(b)
+    .map((e) => ({ e, n: use.filter((x) => e.t.toLowerCase().includes(x)).length }))
+    .filter((h) => h.n > 0)
+    .sort((a, b2) => b2.n - a.n)
+    .map((h) => h.e);
 }
 
 function tocRows(list, terms) {
