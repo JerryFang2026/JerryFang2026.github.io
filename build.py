@@ -24,6 +24,7 @@ CATALOG = SITE_DIR.parent / "outputs" / "book_catalog_20260809" / "data"
 # Later batches: (data dir, structured-TOC file). Each has books.jsonl, sources.jsonl, topics_new.json, merge_map.json.
 EXTRA_CATALOGS = [
     (SITE_DIR.parent / "outputs" / "book_catalog_20260908" / "data", "toc_entries_vision.jsonl"),
+    (SITE_DIR.parent / "outputs" / "book_catalog_20260909" / "data", "toc_entries_vision.jsonl"),
 ]
 POSTS_DIR = SITE_DIR / "posts"
 DATA_OUT = SITE_DIR / "data"
@@ -129,10 +130,30 @@ def load_structured_toc(catalog: Path = CATALOG, toc_file: str = "toc_entries_de
             overlap = len(prev & cur) / max(1, min(len(prev), len(cur)))
             if overlap > 0.7:  # duplicate photo of the same page — keep richer capture
                 if len(entries) > len(pages[-1]["entries"]):
-                    pages[-1] = {"img": img, "entries": entries}
+                    pages[-1] = {"img": img, "entries": entries, "verified": r.get("model") == "fable-visual-qa"}
                 continue
-        pages.append({"img": img, "entries": entries})
+        pages.append({"img": img, "entries": entries, "verified": r.get("model") == "fable-visual-qa"})
     return by_book
+
+
+_ENUM_RE = re.compile(r"^\s*(?:(?:chapter|part|unit|appendix|section)\s+)?(?:[ivxlcdm]{1,6}[.):]|\d+(?:\.\d+)*[.):]?|[a-z][.)])\s+", re.I)
+
+
+def _norm_title(t):
+    return re.sub(r"[^a-z0-9]+", " ", _ENUM_RE.sub("", str(t).lower())).strip()
+
+
+def _same_page_index(existing, pg):
+    """Index of the page in `existing` that is the same physical contents page as `pg`
+    (fuzzy: >50% of the shorter page's section titles in common, enumerators ignored)."""
+    cur = {_norm_title(e["t"]) for e in pg["entries"] if _norm_title(e["t"])}
+    best, best_ratio = None, 0.0
+    for j, old in enumerate(existing):
+        prev = {_norm_title(e["t"]) for e in old["entries"] if _norm_title(e["t"])}
+        ratio = len(cur & prev) / max(1, min(len(cur), len(prev)))
+        if ratio > best_ratio:
+            best, best_ratio = j, ratio
+    return best if best_ratio > 0.5 else None
 
 
 def build_library() -> dict:
@@ -179,7 +200,8 @@ def build_library() -> dict:
                 {"title": src.get("title", ""), "url": src.get("url", ""), "type": src.get("source_type", ""), "supports": src.get("supports", "")}
             )
         if (cat_dir / "topics_new.json").exists():
-            topics.extend(json.loads((cat_dir / "topics_new.json").read_text(encoding="utf-8")))
+            have = {t["name"] for t in topics} | {TOPIC_EN.get(t["name"], t["name"]) for t in topics}
+            topics.extend(t for t in json.loads((cat_dir / "topics_new.json").read_text(encoding="utf-8")) if t["name"] not in have)
         extra_toc = load_structured_toc(cat_dir, toc_file)
         merge_map = json.loads((cat_dir / "merge_map.json").read_text(encoding="utf-8")) if (cat_dir / "merge_map.json").exists() else {}
         local_ids = {b.get("batch_local_id"): b["book_id"] for b in books if b.get("batch_local_id")}
@@ -189,10 +211,13 @@ def build_library() -> dict:
                 continue
             existing = structured_toc.setdefault(target, [])
             for pg in pages:
-                cur = {(e["t"], str(e["p"])) for e in pg["entries"]}
-                dup = any(len(cur & {(e["t"], str(e["p"])) for e in old["entries"]}) / max(1, min(len(cur), len(old["entries"]))) > 0.7 for old in existing)
-                if not dup:
+                j = _same_page_index(existing, pg)
+                if j is None:
                     existing.append(pg)
+                elif pg.get("verified") or not existing[j].get("verified"):
+                    # same page photographed again in a later batch: the later (upright / Fable-verified)
+                    # capture replaces the earlier read instead of duplicating it
+                    existing[j] = pg
 
     out_books = []
     for b in books:
