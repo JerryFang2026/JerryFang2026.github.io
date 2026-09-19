@@ -490,6 +490,10 @@ def main() -> None:
     posts = build_posts()
     write_js(DATA_OUT / "books.js", "LIBRARY", library)
     write_js(DATA_OUT / "posts.js", "POSTS", posts)
+    access = json.loads((DATA_OUT / "reading_access.json").read_text(encoding="utf-8"))
+    write_js(DATA_OUT / "reading_access.js", "READING_ACCESS", access)
+    from book_pages import write_book_pages
+    write_book_pages(library)
     print(f"books: {library['stats']['books']}, toc_pages: {library['stats']['toc_pages']}, posts: {len(posts)}")
     print("wrote data/books.js and data/posts.js")
 

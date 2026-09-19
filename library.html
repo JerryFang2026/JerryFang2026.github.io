@@ -3,26 +3,53 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Find hydrogeology references by book title, author, chapter or topic, with printed page numbers and reading links.">
 <title>Library · Aquifer Notes</title>
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body data-page="library">
 <header id="site-header" class="site-header"></header>
-<main class="wrap">
+<main class="wrap library-wrap">
   <section class="lib-head">
-    <h1>The Hydrogeology Library</h1>
-    <p>An index that answers "which book, which chapter?". Search covers titles, authors, topics, summaries and contents from photographs and verified online sources. Click an entry for its edition, contents and reading links. A page number followed by <b>?</b> awaits checking against the photograph; a linked page number <b>↗</b> was verified from an online source.</p>
-    <div id="stats" class="stats"></div>
+    <p class="eyebrow">THE G15 BOOKSHELF</p>
+    <h1>Find your next reference.</h1>
+    <p>Search the hydrogeology collection by book, author or chapter. Every book has its own page, with contents, printed page numbers and reading links.</p>
+    <p id="library-count" class="library-count"></p>
   </section>
-  <section class="searchbar">
-    <input id="q" type="search" placeholder="Search: pumping test / drainage / hydrochemistry / Freeze…" autocomplete="off">
-    <div id="topic-chips" class="topic-chips"></div>
-    <div id="result-note" class="result-note"></div>
-  </section>
-  <section id="book-list" class="book-list"></section>
+  <form id="catalogue-search" class="search-panel" role="search">
+    <div class="search-grid">
+      <label for="q">Keywords<input id="q" name="q" type="search" placeholder="e.g. pumping test" maxlength="200"></label>
+      <label for="section">Chapter or section<input id="section" name="section" type="search" placeholder="e.g. seawater intrusion" maxlength="200"></label>
+      <label for="title">Book title<input id="title" name="title" type="search" placeholder="e.g. Groundwater" maxlength="200"></label>
+      <label for="author">Author or editor<input id="author" name="author" type="search" placeholder="e.g. John Cherry" maxlength="200"></label>
+    </div>
+    <details id="more-search" class="more-search">
+      <summary>More options: subject, year, ISBN & reading access</summary>
+      <div class="search-grid search-filters">
+        <label for="topic">Subject<select id="topic" name="topic"><option value="">All subjects</option></select></label>
+        <label for="isbn">ISBN<input id="isbn" name="isbn" type="search" placeholder="Hyphens and spaces are optional" maxlength="32" pattern="[0-9Xx \-]+"></label>
+        <div class="year-pair"><label for="year-from">Year from<input id="year-from" name="from" type="number" min="1000" max="2100" placeholder="Any"></label><label for="year-to">Year to<input id="year-to" name="to" type="number" min="1000" max="2100" placeholder="Any"></label></div>
+        <label for="access">Reading access<select id="access" name="access"><option value="all">All books</option><option value="open">Open reading link available</option><option value="online">Any online reading / preview link</option></select></label>
+        <label for="mode">Match within each field<select id="mode" name="mode"><option value="all">All words</option><option value="any">Any word</option><option value="phrase">Exact phrase</option></select></label>
+        <label for="sort">Sort results<select id="sort" name="sort"><option value="relevance">Relevance</option><option value="title">Title A–Z</option><option value="newest">Year: newest first</option><option value="oldest">Year: oldest first</option></select></label>
+      </div>
+      <label class="check-label"><input type="checkbox" name="related" id="related">Include related salinity terms (saline, salinity, saltwater, seawater)</label>
+    </details>
+    <p class="search-hint">Use any field. Filled fields are combined with AND. British and American “modelling/modeling” spellings are matched together.</p>
+    <div class="search-actions"><button class="button primary" type="submit">Search library</button><button class="button quiet" type="reset">Clear all</button><button class="button quiet" id="share-search" type="button">Copy search link</button></div>
+    <p id="search-error" class="search-error" role="alert"></p>
+    <div id="action-status" class="action-status" role="status"></div>
+  </form>
+  <p id="result-note" class="result-note" role="status" tabindex="-1"></p>
+  <section id="book-list" class="book-list" aria-label="Search results"></section>
+  <nav id="pagination" class="pagination" aria-label="Results pages"></nav>
+  <noscript><p>Enable JavaScript to use the search. Individual book pages remain readable without it.</p></noscript>
 </main>
 <footer id="site-footer" class="site-footer"></footer>
 <script src="data/books.js"></script>
+<script src="data/reading_access.js"></script>
+<script src="assets/catalogue-core.js"></script>
+<script src="assets/library.js"></script>
 <script src="assets/app.js"></script>
 </body>
 </html>

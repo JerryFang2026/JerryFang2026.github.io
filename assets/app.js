@@ -44,16 +44,18 @@ function toggleTheme() {
 
 /* ------------------------------------------------------------- header */
 function renderHeader(active) {
+  const base = window.SITE_ROOT || "";
+  if (active === "book") active = "library";
   const el = document.getElementById("site-header");
   if (!el) return;
   el.innerHTML =
     '<div class="wrap">' +
-    '<div class="brand"><a href="index.html">' + esc(SITE.title) + "</a></div>" +
+    '<div class="brand"><a href="' + base + 'index.html">' + esc(SITE.title) + "</a></div>" +
     '<span class="tagline">' + esc(SITE.tagline) + "</span>" +
     '<nav class="main">' +
-    ['<a href="index.html"' + (active === "home" ? ' class="active"' : "") + ">Home</a>",
-     '<a href="library.html"' + (active === "library" ? ' class="active"' : "") + ">Library</a>",
-     '<a href="about.html"' + (active === "about" ? ' class="active"' : "") + ">About</a>"].join("") +
+    ['<a href="' + base + 'index.html"' + (active === "home" ? ' class="active"' : "") + ">Home</a>",
+     '<a href="' + base + 'library.html"' + (active === "library" ? ' class="active"' : "") + ">Library</a>",
+     '<a href="' + base + 'about.html"' + (active === "about" ? ' class="active"' : "") + ">About</a>"].join("") +
     '<button id="theme-toggle" title="Toggle light/dark">☀︎ / ☾</button>' +
     "</nav></div>";
   document.getElementById("theme-toggle").addEventListener("click", toggleTheme);
@@ -129,201 +131,6 @@ function refreshData(file, varName, onChange) {
     .catch(() => {});
 }
 
-/* ------------------------------------------------------------- library */
-const libState = { q: "", topic: null };
-
-function bookMatches(b, terms) {
-  if (!terms.length) return true;
-  const hay = [
-    b.title, b.subtitle, b.volume, b.authors, b.editors, b.publisher,
-    b.knowledge_type, b.summary, b.best_for, b.better_source, b.isbn,
-    (b.topics || []).join(" "), (b.toc || []).join(" "),
-    flatContents(b).map((e) => e.t).join(" "),
-  ].join(" \n ").toLowerCase();
-  return terms.every((t) => hay.includes(t));
-}
-
-function flatContents(b) {
-  return [...(b.contents || []), ...(b.online_contents || [])].flatMap((pg) => pg.entries);
-}
-
-function contentHits(b, terms) {
-  if (!terms.length) return [];
-  // short words ("as", "of") only count when nothing longer was typed; sections that
-  // contain every term come first
-  const strong = terms.filter((x) => x.length >= 3);
-  const use = strong.length ? strong : terms;
-  return flatContents(b)
-    .map((e) => ({ e, n: use.filter((x) => e.t.toLowerCase().includes(x)).length }))
-    .filter((h) => h.n > 0)
-    .sort((a, b2) => b2.n - a.n)
-    .map((h) => h.e);
-}
-
-function tocRows(list, terms) {
-  return list
-    .map(
-      (e) =>
-        '<div class="row l' + (e.l || 1) + '"><span class="t">' + highlight(e.t, terms) +
-        '</span><span class="leader"></span><span class="pg' + (e.u ? ' unv" title="Page number not yet checked against the photograph' : '') + '">' +
-        (e.p_source && e.p != null ? '<a href="' + esc(e.p_source) + '" target="_blank" rel="noopener" title="Page verified from the linked online source">' + esc(e.p) + ' ↗</a>' : (e.p == null ? "" : esc(e.p))) +
-        (e.u && e.p != null ? "?" : "") + "</span></div>"
-    )
-    .join("");
-}
-
-function onlineContents(b, terms) {
-  return (b.online_contents || []).map((group) =>
-    '<p><b>Contents from online sources:</b> <a href="' + esc(group.url) +
-    '" target="_blank" rel="noopener">' + esc(group.label) + '</a></p>' +
-    '<p class="contents-note">' + esc(group.scope) + '</p>' +
-    '<div class="toc-list">' + tocRows(group.entries, terms) + '</div>'
-  ).join('');
-}
-
-function riskLabel(n) {
-  return n >= 5 ? "currency risk: high" : n >= 4 ? "currency risk: elevated" : n >= 3 ? "currency risk: moderate" : "currency risk: low";
-}
-
-function renderBook(b, terms) {
-  const by = [b.authors, b.editors ? "eds. " + b.editors : ""].filter(Boolean).join(" · ");
-  const stars = "★".repeat(b.importance || 0) + "☆".repeat(Math.max(0, 5 - (b.importance || 0)));
-  const tocText = (b.toc || []).join("\n\n");
-  const flat = (b.contents || []).flatMap((pg) => pg.entries);
-  const hits = contentHits(b, terms);
-  const hitsHTML = hits.length
-    ? '<div class="hits"><b>' + hits.length + " matching section" + (hits.length > 1 ? "s" : "") + ":</b>" +
-      tocRows(hits.slice(0, 6), terms) +
-      (hits.length > 6 ? '<div class="morehits">…and ' + (hits.length - 6) + " more in the full contents below</div>" : "") +
-      "</div>"
-    : "";
-  return (
-    '<div class="book" data-id="' + b.id + '">' +
-    '<div class="row1"><h3>' + highlight(b.title, terms) +
-    (b.volume ? ' <span class="vol">' + esc(b.volume) + "</span>" : "") +
-    (b.subtitle ? ' <span class="vol">— ' + esc(b.subtitle) + "</span>" : "") +
-    '</h3><span class="year">' + [b.year, b.publisher].filter(Boolean).map(esc).join(" · ") + "</span></div>" +
-    '<div class="byline">' + highlight(by, terms) + "</div>" +
-    '<div class="badges">' +
-    (b.topics || []).map((t) => '<span class="badge">' + esc(t) + "</span>").join("") +
-    (Number.isFinite(b.currency_risk) && b.currency_risk > 0 ? '<span class="badge risk">' + riskLabel(b.currency_risk) + "</span>" : "") +
-    '<span class="badge loc">' + esc(b.location) + "</span>" +
-    "</div>" +
-    '<div class="bestfor"><b>Best for:</b> ' + highlight(b.best_for, terms) + "</div>" +
-    hitsHTML +
-    '<div class="detail">' +
-    "<p>" + highlight(b.summary, terms) + "</p>" +
-    "<dl>" +
-    (Number.isFinite(b.importance) && b.importance > 0 ? "<dt>Importance</dt><dd>" + stars + "</dd>" : "") +
-    "<dt>Type</dt><dd>" + esc(b.knowledge_type) + "</dd>" +
-    "<dt>Edition</dt><dd>" + esc(b.edition) + (b.first_pub_year ? " (first published " + b.first_pub_year + ")" : "") + "</dd>" +
-    (b.isbn ? "<dt>ISBN</dt><dd>" + esc(b.isbn) + "</dd>" : "") +
-    "<dt>Location</dt><dd>" + esc(b.location) + "</dd>" +
-    "</dl>" +
-    (b.catalogue_note ? '<p class="catalogue-note">' + esc(b.catalogue_note) + "</p>" : "") +
-    (b.contents_note ? '<p class="contents-note">' + esc(b.contents_note) + "</p>" : "") +
-    (b.supplement_note ? '<p class="contents-note">' + esc(b.supplement_note) + "</p>" : "") +
-    (b.currentness_note ? '<div class="note">⚠ ' + esc(b.currentness_note) + "</div>" : "") +
-    (b.better_source ? "<p><b>Related editions &amp; resources:</b> " + esc(b.better_source) + "</p>" : "") +
-    ((b.sources || []).length
-      ? "<p><b>Links:</b></p><ul class='srcs'>" +
-        b.sources.map((s) => '<li><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + "</a> — " + esc(s.supports) + "</li>").join("") +
-        "</ul>"
-      : "") +
-    (flat.length
-      ? "<p><b>Contents (from the photographed pages):</b></p>" +
-        '<div class="toc-list">' + tocRows(flat, terms) + "</div>"
-      : tocText
-      ? '<div class="toc-box">' + highlight(tocText, terms) + "</div>" +
-        '<a class="toc-more">Show full contents ▾</a>'
-      : "") +
-    onlineContents(b, terms) +
-    "</div></div>"
-  );
-}
-
-function renderLibrary() {
-  const listEl = document.getElementById("book-list");
-  const noteEl = document.getElementById("result-note");
-  if (!listEl || !window.LIBRARY) return;
-  const terms = libState.q.toLowerCase().split(/\s+/).filter(Boolean);
-  let books = LIBRARY.books.filter((b) => bookMatches(b, terms));
-  if (libState.topic) books = books.filter((b) => (b.topics || []).includes(libState.topic));
-  if (terms.length)
-    books = books.slice().sort((a, b2) => contentHits(b2, terms).length - contentHits(a, terms).length);
-  noteEl.textContent =
-    books.length + (books.length === 1 ? " book" : " books") +
-    (terms.length || libState.topic ? " (of " + LIBRARY.books.length + ")" : "") +
-    " · sorted by reference value · click an entry for details";
-  listEl.innerHTML = books.map((b) => renderBook(b, terms)).join("") ||
-    "<p style='color:var(--ink-faint);padding:20px 4px'>No matches. Try another keyword — search covers titles, authors, topics, summaries and the full text of every contents page.</p>";
-}
-
-/* Stats row and topic chips. Safe to call again after the data is refreshed:
-   it only rewrites innerHTML, the click handler lives on the container. */
-function renderLibraryHead() {
-  const chipsEl = document.getElementById("topic-chips");
-  const statsEl = document.getElementById("stats");
-  if (!chipsEl || !statsEl || !window.LIBRARY) return;
-
-  const s = LIBRARY.stats;
-  statsEl.innerHTML = [
-    ["catalogue records", s.books], ["title families", s.works],
-    ["contents pages", s.toc_pages], ["topics", s.topics],
-  ].map(([label, n]) => '<div class="stat"><b>' + n + "</b><span>" + label + "</span></div>").join("");
-
-  const counts = {};
-  for (const b of LIBRARY.books) for (const t of b.topics || []) counts[t] = (counts[t] || 0) + 1;
-  const topics = LIBRARY.topics
-    .map((t) => t.name).filter((t) => counts[t])
-    .sort((a, b2) => counts[b2] - counts[a]);
-  chipsEl.innerHTML = topics
-    .map((t) => '<button data-topic="' + esc(t) + '"' + (t === libState.topic ? ' class="on"' : "") + ">" + esc(t) + " " + counts[t] + "</button>")
-    .join("");
-}
-
-function initLibrary() {
-  const q = document.getElementById("q");
-  const chipsEl = document.getElementById("topic-chips");
-  if (!q || !window.LIBRARY) return;
-
-  renderLibraryHead();
-  chipsEl.addEventListener("click", (e) => {
-    const btn = e.target.closest("button");
-    if (!btn) return;
-    const t = btn.getAttribute("data-topic");
-    libState.topic = libState.topic === t ? null : t;
-    for (const b of chipsEl.querySelectorAll("button"))
-      b.classList.toggle("on", b.getAttribute("data-topic") === libState.topic);
-    renderLibrary();
-  });
-
-  let timer = null;
-  q.addEventListener("input", () => {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      libState.q = q.value.trim();
-      renderLibrary();
-    }, 150);
-  });
-
-  document.getElementById("book-list").addEventListener("click", (e) => {
-    const more = e.target.closest(".toc-more");
-    if (more) {
-      const box = more.parentElement.querySelector(".toc-box");
-      box.classList.toggle("full");
-      more.textContent = box.classList.contains("full") ? "Collapse contents ▴" : "Show full contents ▾";
-      e.stopPropagation();
-      return;
-    }
-    if (e.target.closest("a")) return;
-    const card = e.target.closest(".book");
-    if (card) card.classList.toggle("open");
-  });
-
-  renderLibrary();
-}
-
 /* ------------------------------------------------------------- boot */
 document.addEventListener("DOMContentLoaded", () => {
   const page = document.body.getAttribute("data-page");
@@ -338,8 +145,9 @@ document.addEventListener("DOMContentLoaded", () => {
     refreshData("data/posts.js", "POSTS", renderPost);
   }
   if (page === "library") {
-    initLibrary();
-    refreshData("data/books.js", "LIBRARY", () => { renderLibraryHead(); renderLibrary(); });
+    window.LibraryUI.init();
+    refreshData("data/books.js", "LIBRARY", () => window.LibraryUI.render());
   }
+  if (page === "book" && window.BookUI) window.BookUI.init();
   if (page === "about" && window.mountComments) mountComments("guestbook", "Guestbook");
 });

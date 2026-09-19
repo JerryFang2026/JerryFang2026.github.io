@@ -69,3 +69,16 @@ python -m http.server 8787 --directory D:/资料库/site
 `python make_artifact.py` 生成单文件 `artifact.html`。
 已发布：https://claude.ai/code/artifact/3d0bbd9e-e133-4c97-a943-c729b069f8ab
 （更新方式：让 Claude 重新构建并 republish 同一路径。）
+
+
+## Catalogue pages and search
+
+Run `python build.py` after changing catalogue data. This also generates the stable `books/BK-0001.html`-style pages and `sitemap.xml`. Each book page contains readable metadata and contents in its HTML; JavaScript adds within-book search, reading-link groups, reference export and optional discussion. Do not edit generated book pages directly.
+
+The library supports separate keyword, title, author/editor, chapter, ISBN, subject and year filters. Filled fields are combined with AND; All words / Any word / Exact phrase applies within each text field. Related salinity terms are optional and rank below literal matches. Relevance uses the best match, not the number of contents entries. URLs preserve filters and pagination, and section links use stable photo/entry identifiers.
+
+`data/reading_access.json` records reviewed book/source relationships. A free companion, a review, or a later edition is not labelled as open full text of the held book. Add a reviewed mapping when adding a new reading source; unreviewed open-text candidates stay under bibliographic sources.
+
+`data/contents_supplements.json` contains the separately attributed online additions. The original catalogue records and their unknown fields remain the source of truth. CSL JSON (Zotero) and RIS exports preserve the recorded copy year and edition; contributor cleanup is confined to export formatting.
+
+Checks: `node --test tests/catalogue.test.cjs`. After `python build.py`, run `python make_artifact.py` to refresh the single-file preview. Its library uses the same search code and links to the hosted individual book pages. Publishing a new Claude artifact mirror is a separate action.

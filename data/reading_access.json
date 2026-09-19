@@ -1,0 +1,127 @@
+{
+  "BK-0002": {
+    "https://gw-project.org/books/groundwater/": "open"
+  },
+  "BK-0014": {
+    "https://edepot.wur.nl/70972": "related"
+  },
+  "BK-0021": {
+    "https://edepot.wur.nl/333115": "open"
+  },
+  "BK-0022": {
+    "https://edepot.wur.nl/333102": "open"
+  },
+  "BK-0023": {
+    "https://edepot.wur.nl/333110": "open"
+  },
+  "BK-0024": {
+    "https://edepot.wur.nl/333101": "open"
+  },
+  "BK-0017": {
+    "https://pubs.usgs.gov/publication/wsp1473": "open"
+  },
+  "BK-0032": {
+    "https://www.bgs.ac.uk/groundwater/quality/baseline/england-and-wales/": "related"
+  },
+  "BK-0063": {
+    "https://pubs.usgs.gov/twri/twri3-b2/pdf/TWRI_3-B2.pdf": "open",
+    "https://pubs.usgs.gov/twri/twri3-b2/html/pdf.html": "open"
+  },
+  "BK-0037": {
+    "https://nora.nerc.ac.uk/id/eprint/537257/": "open",
+    "https://nora.nerc.ac.uk/id/eprint/537257/1/WZ86003.pdf": "open"
+  },
+  "BK-0045": {
+    "https://nora.nerc.ac.uk/id/eprint/12230/1/AMM_overview_NORA.pdf": "related",
+    "https://earthwise.bgs.ac.uk/index.php/Hydrogeology_of_Wales:_References": "related"
+  },
+  "BK-0062": {
+    "https://pubs.usgs.gov/twri/twri3-b1/pdf/twri_3-B1_a.pdf": "open",
+    "https://pubs.usgs.gov/twri/twri3-b1/": "open"
+  },
+  "BK-0066": {
+    "http://www.swim-site.nl/pdf/swim12.html": "open"
+  },
+  "BK-0076": {
+    "https://www.sciencedirect.com/science/article/pii/S2214581825002083": "related"
+  },
+  "BK-0068": {
+    "https://fc79.gw-project.org/": "related",
+    "https://gw-project.org/books/hydrogeologic-properties-of-earth-materials-and-principles-of-groundwater-flow/": "related"
+  },
+  "BK-0031": {
+    "https://pubs.usgs.gov/wsp/0494/report.pdf": "related"
+  },
+  "BK-0074": {
+    "https://eprintspublications.npl.co.uk/8619/1/Corrosion%20Guide%20No%209.pdf": "related",
+    "https://eprintspublications.npl.co.uk/8617/1/Corrosion%20Guide%20No.5.pdf": "related"
+  },
+  "BK-0073": {
+    "https://www.ngwa.org/docs/default-source/default-document-library/groundwater/iron-bacteria.pdf?sfvrsn=90a6547d_2": "related",
+    "https://www.health.state.mn.us/communities/environment/water/wells/waterquality/ironbacteria.html": "related"
+  },
+  "BK-0081": {
+    "http://www.swim-site.nl/pdf/swim06/swim_06_all.pdf": "open",
+    "http://www.swim-site.nl/proceedings.html": "related"
+  },
+  "BK-0049": {
+    "https://www.persee.fr/doc/geo_0003-4010_1981_num_90_501_20035_t1_0593_0000_2": "reference"
+  },
+  "BK-0053": {
+    "https://iah.org/wp-content/uploads/2013/03/IAHbook_ICH17.zip": "related",
+    "https://www.bgr.bund.de/EN/Themen/Wasser/Projekte/laufend/Beratung/Ihme1500/standard_legend_hydro_maps.pdf": "related"
+  },
+  "BK-0067": {
+    "https://fc79.gw-project.org/": "related",
+    "https://gw-project.org/books/hydrogeologic-properties-of-earth-materials-and-principles-of-groundwater-flow/": "related"
+  },
+  "BK-0077": {
+    "http://web.archive.org/web/20190713052119/http://www-naweb.iaea.org/napc/ih/documents/IAEA%20Monographs/TRS%20126%20Nuclear%20well%20logging%20in%20Hydrology%201971.pdf": "open",
+    "https://www-pub.iaea.org/MTCD/Publications/PDF/P1879_web.pdf": "related"
+  },
+  "BK-0078": {
+    "https://edepot.wur.nl/70972": "related"
+  },
+  "BK-0079": {
+    "https://www.open.edu/openlearn/digital-computing/integrated-safety-health-and-environmental-management-an-introduction/content-section-0": "related"
+  },
+  "BK-0087": {
+    "https://www2.math.upenn.edu/~wilf/website/Mathematics_for_the_Physical_Sciences.html": "open"
+  },
+  "BK-0096": {
+    "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT": "open"
+  },
+  "BK-0102": {
+    "https://pubs.usgs.gov/wsp/1544h/report.pdf": "open"
+  },
+  "BK-0103": {
+    "https://pubs.usgs.gov/wsp/1757m/report.pdf": "open"
+  },
+  "BK-0107": {
+    "https://pubs.usgs.gov/wsp/1536f/report.pdf": "open"
+  },
+  "BK-0108": {
+    "https://pubs.usgs.gov/wsp/1608l/report.pdf": "open"
+  },
+  "BK-0111": {
+    "https://www.ideals.illinois.edu/items/73348": "open"
+  },
+  "BK-0117": {
+    "https://roscoemoss.com/wp-content/uploads/publications/ggwc.pdf": "open"
+  },
+  "BK-0118": {
+    "https://www.ideals.illinois.edu/items/73426": "open"
+  },
+  "BK-0120": {
+    "https://www.epa.gov/cwa-404/lake-and-reservoir-restoration-guidance-manual": "open"
+  },
+  "BK-0138": {
+    "https://www.ircwash.org/resources/switch-city-putting-urban-water-management-test": "open"
+  },
+  "BK-0160": {
+    "https://nora.nerc.ac.uk/id/eprint/3578/1/RR07006.pdf": "open"
+  },
+  "BK-0159": {
+    "https://www.daera-ni.gov.uk/sites/default/files/publications/doe/land-report-model-procedures-management-of-land-contamination-2004.pdf": "open"
+  }
+}

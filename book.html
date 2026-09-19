@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Book · Aquifer Notes</title><link rel="stylesheet" href="assets/style.css"></head>
+<body><main class="wrap"><h1 id="redirect-title">Opening book…</h1><p><a href="library.html">Browse the library</a></p></main><script src="data/books.js"></script><script src="assets/catalogue-core.js"></script>
+<script>
+const id=new URLSearchParams(location.search).get('id');
+const book=LIBRARY.books.find(b=>b.id===id);
+if(book) location.replace(Catalogue.bookURL(book)+location.hash);
+else document.getElementById('redirect-title').textContent='Book not found';
+</script></body></html>
