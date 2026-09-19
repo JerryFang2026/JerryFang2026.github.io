@@ -191,11 +191,11 @@ function renderBook(b, terms) {
     '<div class="row1"><h3>' + highlight(b.title, terms) +
     (b.volume ? ' <span class="vol">' + esc(b.volume) + "</span>" : "") +
     (b.subtitle ? ' <span class="vol">— ' + esc(b.subtitle) + "</span>" : "") +
-    '</h3><span class="year">' + esc(b.year) + " · " + esc(b.publisher) + "</span></div>" +
+    '</h3><span class="year">' + [b.year, b.publisher].filter(Boolean).map(esc).join(" · ") + "</span></div>" +
     '<div class="byline">' + highlight(by, terms) + "</div>" +
     '<div class="badges">' +
     (b.topics || []).map((t) => '<span class="badge">' + esc(t) + "</span>").join("") +
-    '<span class="badge risk">' + riskLabel(b.currency_risk) + "</span>" +
+    (Number.isFinite(b.currency_risk) && b.currency_risk > 0 ? '<span class="badge risk">' + riskLabel(b.currency_risk) + "</span>" : "") +
     '<span class="badge loc">' + esc(b.location) + "</span>" +
     "</div>" +
     '<div class="bestfor"><b>Best for:</b> ' + highlight(b.best_for, terms) + "</div>" +
@@ -203,12 +203,14 @@ function renderBook(b, terms) {
     '<div class="detail">' +
     "<p>" + highlight(b.summary, terms) + "</p>" +
     "<dl>" +
-    "<dt>Importance</dt><dd>" + stars + "</dd>" +
+    (Number.isFinite(b.importance) && b.importance > 0 ? "<dt>Importance</dt><dd>" + stars + "</dd>" : "") +
     "<dt>Type</dt><dd>" + esc(b.knowledge_type) + "</dd>" +
     "<dt>Edition</dt><dd>" + esc(b.edition) + (b.first_pub_year ? " (first published " + b.first_pub_year + ")" : "") + "</dd>" +
     (b.isbn ? "<dt>ISBN</dt><dd>" + esc(b.isbn) + "</dd>" : "") +
     "<dt>Location</dt><dd>" + esc(b.location) + "</dd>" +
     "</dl>" +
+    (b.catalogue_note ? '<p class="catalogue-note">' + esc(b.catalogue_note) + "</p>" : "") +
+    (b.contents_note ? '<p class="contents-note">' + esc(b.contents_note) + "</p>" : "") +
     (b.currentness_note ? '<div class="note">⚠ ' + esc(b.currentness_note) + "</div>" : "") +
     (b.better_source ? "<p><b>Newer / better edition:</b> " + esc(b.better_source) + "</p>" : "") +
     ((b.sources || []).length
@@ -253,7 +255,7 @@ function renderLibraryHead() {
 
   const s = LIBRARY.stats;
   statsEl.innerHTML = [
-    ["physical books", s.books], ["title families", s.works],
+    ["catalogue records", s.books], ["title families", s.works],
     ["contents pages", s.toc_pages], ["topics", s.topics],
   ].map(([label, n]) => '<div class="stat"><b>' + n + "</b><span>" + label + "</span></div>").join("");
 

@@ -109,7 +109,7 @@ article.post code { font-family: var(--mono); font-size: .9em; background: var(-
 .stats { display: flex; gap: 28px; flex-wrap: wrap; margin: 18px 0 6px; }
 .stat b { font-size: 23px; font-family: var(--serif); color: var(--accent); display: block; line-height: 1.2; font-variant-numeric: tabular-nums; }
 .stat span { font-size: 12px; color: var(--ink-faint); }
-.searchbar { position: sticky; top: 0; background: var(--bg); padding: 14px 0 10px; z-index: 5; }
+.searchbar { position: relative; background: var(--bg); padding: 14px 0 10px; z-index: 5; }
 #q { width: 100%; padding: 11px 16px; font-size: 16px; color: var(--ink); background: var(--bg-card); border: 1.5px solid var(--line); border-radius: 10px; font-family: var(--sans); }
 #q:focus { outline: none; border-color: var(--accent); }
 .topic-chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 4px; }
@@ -141,6 +141,8 @@ article.post code { font-family: var(--mono); font-size: .9em; background: var(-
 .toc-list .row.l1:first-child { margin-top: 0; }
 .toc-list .row.l2 { padding-left: 16px; }
 .toc-list .row.l3 { padding-left: 32px; color: var(--ink-soft); }
+.toc-list .row.l4 { padding-left: 48px; color: var(--ink-soft); }
+.row .pg.unv { color: #b45309; border-bottom: 1px dotted currentColor; cursor: help; }
 .book .detail { display: none; margin-top: 14px; border-top: 1px dashed var(--line); padding-top: 14px; font-size: 14px; }
 .book.open .detail { display: block; }
 .detail dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; }
@@ -287,7 +289,7 @@ function tocRows(list, terms) {
     .map(
       (e) =>
         '<div class="row l' + (e.l || 1) + '"><span class="t">' + highlight(e.t, terms) +
-        '</span><span class="leader"></span><span class="pg">' + (e.p == null ? "" : esc(e.p)) + "</span></div>"
+        '</span><span class="leader"></span><span class="pg' + (e.u ? ' unv" title="Page number not yet checked against the photograph' : '') + '">' + (e.p == null ? "" : esc(e.p)) + (e.u && e.p != null ? "?" : "") + "</span></div>"
     )
     .join("");
 }
@@ -310,20 +312,22 @@ function renderBook(b, terms) {
     '<div class="row1"><h3>' + highlight(b.title, terms) +
     (b.volume ? ' <span class="vol">' + esc(b.volume) + "</span>" : "") +
     (b.subtitle ? ' <span class="vol">— ' + esc(b.subtitle) + "</span>" : "") +
-    '</h3><span class="year">' + esc(b.year) + " · " + esc(b.publisher) + "</span></div>" +
+    '</h3><span class="year">' + [b.year, b.publisher].filter(Boolean).map(esc).join(" · ") + "</span></div>" +
     '<div class="byline">' + highlight(by, terms) + "</div>" +
     '<div class="badges">' +
     (b.topics || []).map((t) => '<span class="badge">' + esc(t) + "</span>").join("") +
-    '<span class="badge risk">' + riskLabel(b.currency_risk) + "</span>" +
+    (Number.isFinite(b.currency_risk) && b.currency_risk > 0 ? '<span class="badge risk">' + riskLabel(b.currency_risk) + "</span>" : "") +
     '<span class="badge loc">' + esc(b.location) + "</span></div>" +
     '<div class="bestfor"><b>Best for:</b> ' + highlight(b.best_for, terms) + "</div>" +
     hitsHTML +
     '<div class="detail"><p>' + highlight(b.summary, terms) + "</p><dl>" +
-    "<dt>Importance</dt><dd>" + stars + "</dd>" +
+    (Number.isFinite(b.importance) && b.importance > 0 ? "<dt>Importance</dt><dd>" + stars + "</dd>" : "") +
     "<dt>Type</dt><dd>" + esc(b.knowledge_type) + "</dd>" +
     "<dt>Edition</dt><dd>" + esc(b.edition) + (b.first_pub_year ? " (first published " + b.first_pub_year + ")" : "") + "</dd>" +
     (b.isbn ? '<dt>ISBN</dt><dd class="mono">' + esc(b.isbn) + "</dd>" : "") +
     '<dt>Location</dt><dd class="mono">' + esc(b.location) + "</dd></dl>" +
+    (b.catalogue_note ? '<p class="catalogue-note">' + esc(b.catalogue_note) + "</p>" : "") +
+    (b.contents_note ? '<p class="contents-note">' + esc(b.contents_note) + "</p>" : "") +
     (b.currentness_note ? '<div class="note">⚠ ' + esc(b.currentness_note) + "</div>" : "") +
     (b.better_source ? "<p><b>Newer / better edition:</b> " + esc(b.better_source) + "</p>" : "") +
     ((b.sources || []).length
@@ -340,10 +344,10 @@ function renderBook(b, terms) {
 }
 function libraryHTML() {
   const s = LIBRARY.stats;
-  const statHTML = [["physical books", s.books], ["title families", s.works], ["contents pages", s.toc_pages], ["topics", s.topics]]
+  const statHTML = [["catalogue records", s.books], ["title families", s.works], ["contents pages", s.toc_pages], ["topics", s.topics]]
     .map(([label, n]) => '<div class="stat"><b>' + n + "</b><span>" + label + "</span></div>").join("");
   return '<section class="lib-head"><h1>The Hydrogeology Library</h1>' +
-    '<p>An index that answers "which book, which chapter?". Search covers titles, authors, topics, summaries and the full text of every photographed contents page. Click any entry for details — including a currency warning and the better modern edition where one exists.</p>' +
+    '<p>An index that answers "which book, which chapter?". Search covers titles, authors, topics, summaries and the full text of every photographed contents page. Click any entry for details — including a currency warning and the better modern edition where one exists. A page number followed by <b>?</b> has not yet been checked against the photograph.</p>' +
     '<div class="stats">' + statHTML + "</div></section>" +
     '<section class="searchbar"><input id="q" type="search" placeholder="Search: pumping test / drainage / hydrochemistry / Freeze…" autocomplete="off">' +
     '<div id="topic-chips" class="topic-chips"></div><div id="result-note" class="result-note"></div></section>' +

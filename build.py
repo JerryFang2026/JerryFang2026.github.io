@@ -25,6 +25,7 @@ CATALOG = SITE_DIR.parent / "outputs" / "book_catalog_20260809" / "data"
 EXTRA_CATALOGS = [
     (SITE_DIR.parent / "outputs" / "book_catalog_20260908" / "data", "toc_entries_vision.jsonl"),
     (SITE_DIR.parent / "outputs" / "book_catalog_20260909" / "data", "toc_entries_vision.jsonl"),
+    (SITE_DIR.parent / "outputs" / "book_catalog_20260917" / "data", "toc_entries_vision.jsonl"),
 ]
 POSTS_DIR = SITE_DIR / "posts"
 DATA_OUT = SITE_DIR / "data"
@@ -103,6 +104,8 @@ def load_structured_toc(catalog: Path = CATALOG, toc_file: str = "toc_entries_de
     if not src.exists():
         return {}
     rows = [json.loads(l) for l in src.read_text(encoding="utf-8").splitlines() if l.strip()]
+    policy_path = catalog / "toc_policy.json"
+    policy = json.loads(policy_path.read_text(encoding="utf-8")) if policy_path.exists() else {}
 
     fixes_path = catalog / "toc_entries_fixes.jsonl"
     if fixes_path.exists():
@@ -128,7 +131,7 @@ def load_structured_toc(catalog: Path = CATALOG, toc_file: str = "toc_entries_de
             continue
         img = r["source_file"].replace(".HEIC", "")
         pages = by_book.setdefault(r["book_id"], [])
-        if pages:
+        if pages and policy.get("adjacent_dedupe", True):
             prev = {(e["t"], str(e["p"])) for e in pages[-1]["entries"]}
             cur = {(e["t"], str(e["p"])) for e in entries}
             overlap = len(prev & cur) / max(1, min(len(prev), len(cur)))
@@ -136,7 +139,7 @@ def load_structured_toc(catalog: Path = CATALOG, toc_file: str = "toc_entries_de
                 if len(entries) > len(pages[-1]["entries"]):
                     pages[-1] = {"img": img, "entries": entries, "verified": r.get("model") == "fable-visual-qa"}
                 continue
-        pages.append({"img": img, "entries": entries, "verified": r.get("model") == "fable-visual-qa"})
+        pages.append({"img": img, "entries": entries, "verified": r.get("model") == "fable-visual-qa" or r.get("verified") is True})
     return by_book
 
 
@@ -208,12 +211,19 @@ def build_library() -> dict:
             topics.extend(t for t in json.loads((cat_dir / "topics_new.json").read_text(encoding="utf-8")) if t["name"] not in have)
         extra_toc = load_structured_toc(cat_dir, toc_file)
         merge_map = json.loads((cat_dir / "merge_map.json").read_text(encoding="utf-8")) if (cat_dir / "merge_map.json").exists() else {}
+        policy_path = cat_dir / "toc_policy.json"
+        policy = json.loads(policy_path.read_text(encoding="utf-8")) if policy_path.exists() else {}
         local_ids = {b.get("batch_local_id"): b["book_id"] for b in books if b.get("batch_local_id")}
         for local_id, pages in extra_toc.items():
             target = merge_map.get(local_id) or local_ids.get(local_id)
             if not target:
                 continue
             existing = structured_toc.setdefault(target, [])
+            if policy.get("page_merge") == "append":
+                # This catalogue has explicit, reviewed ownership and duplicate
+                # decisions. Fuzzy title overlap would remove distinct pages.
+                existing.extend(pages)
+                continue
             for pg in pages:
                 j = _same_page_index(existing, pg)
                 if j is None:
@@ -259,6 +269,8 @@ def build_library() -> dict:
                 "toc": toc_by_book.get(bid, []),
                 "contents": structured_toc.get(bid, []),
                 "sources": book_sources,
+                **({"catalogue_note": b["catalogue_note"]} if b.get("catalogue_note") else {}),
+                **({"contents_note": b["contents_note"]} if b.get("contents_note") else {}),
             }
         )
 
