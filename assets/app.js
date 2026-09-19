@@ -144,7 +144,7 @@ function bookMatches(b, terms) {
 }
 
 function flatContents(b) {
-  return (b.contents || []).flatMap((pg) => pg.entries);
+  return [...(b.contents || []), ...(b.online_contents || [])].flatMap((pg) => pg.entries);
 }
 
 function contentHits(b, terms) {
@@ -165,9 +165,20 @@ function tocRows(list, terms) {
     .map(
       (e) =>
         '<div class="row l' + (e.l || 1) + '"><span class="t">' + highlight(e.t, terms) +
-        '</span><span class="leader"></span><span class="pg' + (e.u ? ' unv" title="Page number not yet checked against the photograph' : '') + '">' + (e.p == null ? "" : esc(e.p)) + (e.u && e.p != null ? "?" : "") + "</span></div>"
+        '</span><span class="leader"></span><span class="pg' + (e.u ? ' unv" title="Page number not yet checked against the photograph' : '') + '">' +
+        (e.p_source && e.p != null ? '<a href="' + esc(e.p_source) + '" target="_blank" rel="noopener" title="Page verified from the linked online source">' + esc(e.p) + ' ↗</a>' : (e.p == null ? "" : esc(e.p))) +
+        (e.u && e.p != null ? "?" : "") + "</span></div>"
     )
     .join("");
+}
+
+function onlineContents(b, terms) {
+  return (b.online_contents || []).map((group) =>
+    '<p><b>Contents from online sources:</b> <a href="' + esc(group.url) +
+    '" target="_blank" rel="noopener">' + esc(group.label) + '</a></p>' +
+    '<p class="contents-note">' + esc(group.scope) + '</p>' +
+    '<div class="toc-list">' + tocRows(group.entries, terms) + '</div>'
+  ).join('');
 }
 
 function riskLabel(n) {
@@ -178,7 +189,7 @@ function renderBook(b, terms) {
   const by = [b.authors, b.editors ? "eds. " + b.editors : ""].filter(Boolean).join(" · ");
   const stars = "★".repeat(b.importance || 0) + "☆".repeat(Math.max(0, 5 - (b.importance || 0)));
   const tocText = (b.toc || []).join("\n\n");
-  const flat = flatContents(b);
+  const flat = (b.contents || []).flatMap((pg) => pg.entries);
   const hits = contentHits(b, terms);
   const hitsHTML = hits.length
     ? '<div class="hits"><b>' + hits.length + " matching section" + (hits.length > 1 ? "s" : "") + ":</b>" +
@@ -211,6 +222,7 @@ function renderBook(b, terms) {
     "</dl>" +
     (b.catalogue_note ? '<p class="catalogue-note">' + esc(b.catalogue_note) + "</p>" : "") +
     (b.contents_note ? '<p class="contents-note">' + esc(b.contents_note) + "</p>" : "") +
+    (b.supplement_note ? '<p class="contents-note">' + esc(b.supplement_note) + "</p>" : "") +
     (b.currentness_note ? '<div class="note">⚠ ' + esc(b.currentness_note) + "</div>" : "") +
     (b.better_source ? "<p><b>Related editions &amp; resources:</b> " + esc(b.better_source) + "</p>" : "") +
     ((b.sources || []).length
@@ -225,6 +237,7 @@ function renderBook(b, terms) {
       ? '<div class="toc-box">' + highlight(tocText, terms) + "</div>" +
         '<a class="toc-more">Show full contents ▾</a>'
       : "") +
+    onlineContents(b, terms) +
     "</div></div>"
   );
 }

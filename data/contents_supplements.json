@@ -1,0 +1,1170 @@
+{
+  "BK-0138": {
+    "edition_evidence": "Publisher PDF ISBN 9789066870789 and 2011 copyright match IMG_3525. Editors and title match IMG_3522. PDF page 3 is a spread containing the imprint and printed contents page iii.",
+    "coverage_note": "The complete printed table of contents has been supplied from the matching 2011 publisher PDF.",
+    "note": "Online additions are attributed below. Page numbers refer to printed book pages, not PDF viewer positions.",
+    "groups": [
+      {
+        "label": "SWITCH in the city - publisher PDF (2011)",
+        "url": "https://www.ircwash.org/sites/default/files/Butterworth-2011-SWITCH_13.pdf#page=3",
+        "scope": "Complete printed table of contents (p. iii). Part headings have no separate printed page number. Source: IRC, 2011; CC BY-NC-SA 3.0.",
+        "entries": [
+          {
+            "l": 1,
+            "t": "Preface",
+            "p": "iv"
+          },
+          {
+            "l": 1,
+            "t": "part 1 Learning from SWITCH",
+            "p": null
+          },
+          {
+            "l": 2,
+            "t": "1.1 Introduction",
+            "p": 2
+          },
+          {
+            "l": 2,
+            "t": "1.2 What have we learned?",
+            "p": 16
+          },
+          {
+            "l": 2,
+            "t": "1.3 Perspectives on learning alliances as an innovative mechanism for change",
+            "p": 38
+          },
+          {
+            "l": 1,
+            "t": "part 2 City case studies",
+            "p": null
+          },
+          {
+            "l": 2,
+            "t": "2.1 The potential for treated wastewater use in Lima",
+            "p": 68
+          },
+          {
+            "l": 2,
+            "t": "2.2 Cali: city of seven rivers",
+            "p": 84
+          },
+          {
+            "l": 2,
+            "t": "2.3 Starting at the top: preventing pollution from tanneries and cleaning up the Río Bogotá",
+            "p": 92
+          },
+          {
+            "l": 2,
+            "t": "2.4 Water management and urban planning in Belo Horizonte",
+            "p": 110
+          },
+          {
+            "l": 2,
+            "t": "2.5 Learning together makes strategic planning possible for fast growing Accra",
+            "p": 120
+          },
+          {
+            "l": 2,
+            "t": "2.6 Integrated urban water management planning in Alexandria",
+            "p": 138
+          },
+          {
+            "l": 2,
+            "t": "2.7 Managing water risks in Birmingham: the city with the tastiest tap water in Britain",
+            "p": 158
+          },
+          {
+            "l": 2,
+            "t": "2.8 Zaragoza: taking pride in integrated water management",
+            "p": 178
+          },
+          {
+            "l": 2,
+            "t": "2.9 Hamburg: city with the largest river island in Europe",
+            "p": 188
+          },
+          {
+            "l": 2,
+            "t": "2.10 Lodz: city of water",
+            "p": 202
+          },
+          {
+            "l": 2,
+            "t": "2.11 Tel Aviv Water Club puts focus on wastewater treatment",
+            "p": 214
+          },
+          {
+            "l": 2,
+            "t": "2.12 Beijing: alternative water sources for peri-urban agriculture",
+            "p": 224
+          },
+          {
+            "l": 1,
+            "t": "part 3 Guidelines",
+            "p": null
+          },
+          {
+            "l": 2,
+            "t": "3.1 Starting a learning alliance",
+            "p": 242
+          },
+          {
+            "l": 2,
+            "t": "3.2 Stakeholder analysis",
+            "p": 256
+          },
+          {
+            "l": 2,
+            "t": "3.3 Developing a joint vision",
+            "p": 272
+          },
+          {
+            "l": 2,
+            "t": "3.4 Facilitating communication in learning alliances",
+            "p": 280
+          },
+          {
+            "l": 2,
+            "t": "3.5 Rapid urban water assessment",
+            "p": 298
+          },
+          {
+            "l": 2,
+            "t": "3.6 Scenario building",
+            "p": 314
+          },
+          {
+            "l": 2,
+            "t": "3.7 Strategy development",
+            "p": 326
+          },
+          {
+            "l": 2,
+            "t": "3.8 Innovating in learning alliances: action research concepts and practice",
+            "p": 338
+          },
+          {
+            "l": 2,
+            "t": "3.9 Promoting equity in processes",
+            "p": 346
+          },
+          {
+            "l": 2,
+            "t": "3.10 Process documentation",
+            "p": 356
+          },
+          {
+            "l": 2,
+            "t": "3.11 Monitoring success and less",
+            "p": 368
+          },
+          {
+            "l": 2,
+            "t": "3.12 Engaging with the realities of governance",
+            "p": 378
+          },
+          {
+            "l": 2,
+            "t": "3.13 Facilitating creative workshops",
+            "p": 388
+          },
+          {
+            "l": 2,
+            "t": "3.14 Transitioning urban water systems",
+            "p": 396
+          },
+          {
+            "l": 1,
+            "t": "Contributors to the SWITCH in the city book",
+            "p": 406
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "Full book: SWITCH in the city (2011)",
+        "url": "https://www.ircwash.org/resources/switch-city-putting-urban-water-management-test",
+        "type": "full text / publisher",
+        "supports": "Publisher provides the complete book under CC BY-NC-SA 3.0; ISBN matches the classroom copy."
+      }
+    ]
+  },
+  "BK-0096": {
+    "edition_evidence": "EPA report 570/9-75-001 matches IMG_3166. Numbered standards, titles and neighbouring page numbers agree with the photographed contents. Printing year of the classroom copy remains undetermined.",
+    "note": "86 previously unnumbered headings/standards now link to their verified printed pages in the matching EPA report. Linked page numbers (arrow) come from that online source; remaining blanks are not guessed.",
+    "page_updates": [
+      {
+        "img": "IMG_3168.jpg",
+        "entry_index": 16,
+        "title": "HOLE LOCATION AND PURPOSE",
+        "page": 51,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3168.jpg",
+        "entry_index": 18,
+        "title": "DRILLING METHODS",
+        "page": 51,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3168.jpg",
+        "entry_index": 27,
+        "title": "DRILLER'S LOGS AND REPORTS",
+        "page": 52,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3168.jpg",
+        "entry_index": 32,
+        "title": "GEOPHYSICAL/MECHANICAL LOGS",
+        "page": 58,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3168.jpg",
+        "entry_index": 34,
+        "title": "FORMATION SAMPLING METHODS",
+        "page": 58,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3169.jpg",
+        "entry_index": 2,
+        "title": "FORMATION SAMPLING INTERVAL",
+        "page": 60,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3169.jpg",
+        "entry_index": 6,
+        "title": "WATER (AQUIFER) SAMPLING",
+        "page": 60,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3169.jpg",
+        "entry_index": 10,
+        "title": "METHOD OF PAYMENT FOR TEST HOLES AND SAMPLES",
+        "page": 61,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3169.jpg",
+        "entry_index": 11,
+        "title": "45.000-000-001. Method of Payment",
+        "page": 61,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3169.jpg",
+        "entry_index": 18,
+        "title": "DRILLING FLUID CONTROL PROGRAM",
+        "page": 67,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3169.jpg",
+        "entry_index": 22,
+        "title": "TEMPORARY CAPPING",
+        "page": 68,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3169.jpg",
+        "entry_index": 24,
+        "title": "METHOD OF PAYMENT OF WELL CONSTRUCTION",
+        "page": 68,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3169.jpg",
+        "entry_index": 25,
+        "title": "46.000-010-000. Method of Payment",
+        "page": 68,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3169.jpg",
+        "entry_index": 32,
+        "title": "METHODS OF INSTALLATION",
+        "page": 76,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3170.jpg",
+        "entry_index": 0,
+        "title": "METHOD OF JOINING",
+        "page": 77,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3170.jpg",
+        "entry_index": 2,
+        "title": "SANITARY PROTECTION OF WELL",
+        "page": 77,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3170.jpg",
+        "entry_index": 4,
+        "title": "CASING SEATING",
+        "page": 78,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3170.jpg",
+        "entry_index": 7,
+        "title": "PRESSURE TESTING OF SEATING",
+        "page": 78,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3170.jpg",
+        "entry_index": 9,
+        "title": "METHOD OF PAYMENT FOR CASING AND INSTALLATION",
+        "page": 78,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3170.jpg",
+        "entry_index": 10,
+        "title": "47.000-000-100. Method of Payment",
+        "page": 78,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3170.jpg",
+        "entry_index": 15,
+        "title": "GROUTING MATERIALS TO BE USED",
+        "page": 81,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3170.jpg",
+        "entry_index": 19,
+        "title": "METHODS OF INSTALLATION OF GROUT",
+        "page": 81,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3170.jpg",
+        "entry_index": 29,
+        "title": "LOCATION OF GROUT",
+        "page": 85,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3170.jpg",
+        "entry_index": 34,
+        "title": "CENTRALIZERS",
+        "page": 85,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3171.jpg",
+        "entry_index": 0,
+        "title": "GEOPHYSICAL LOGGING FOR CEMENT BOND",
+        "page": 87,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3171.jpg",
+        "entry_index": 4,
+        "title": "METHOD OF PAYMENT FOR GROUTING",
+        "page": 87,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3171.jpg",
+        "entry_index": 5,
+        "title": "48.000-000-100. Method of Payment",
+        "page": 87,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3171.jpg",
+        "entry_index": 12,
+        "title": "SCREEN-TYPE SELECTION",
+        "page": 90,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3171.jpg",
+        "entry_index": 20,
+        "title": "SCREEN APERATURE SIZE",
+        "page": 91,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3171.jpg",
+        "entry_index": 23,
+        "title": "SCREEN LENGTH",
+        "page": 92,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3171.jpg",
+        "entry_index": 26,
+        "title": "METHOD OF SCREEN INSTALLATION",
+        "page": 93,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3171.jpg",
+        "entry_index": 36,
+        "title": "METHOD OF JOINING SCREEN TO SCREEN",
+        "page": 94,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3171.jpg",
+        "entry_index": 38,
+        "title": "METHOD OF CONNECTING SCREEN TO CASING",
+        "page": 94,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3172.jpg",
+        "entry_index": 9,
+        "title": "METHOD OF PAYMENT FOR WELL SCREENS",
+        "page": 95,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3172.jpg",
+        "entry_index": 10,
+        "title": "49.000–000–001. Method of Payment",
+        "page": 95,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3172.jpg",
+        "entry_index": 15,
+        "title": "FILTER-TYPE SELECTION",
+        "page": 97,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3172.jpg",
+        "entry_index": 17,
+        "title": "FILTER CONSTRUCTION STANDARDS",
+        "page": 98,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3172.jpg",
+        "entry_index": 22,
+        "title": "LENGTH OF ARTIFICIAL FILTER",
+        "page": 98,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3172.jpg",
+        "entry_index": 27,
+        "title": "STORAGE OF FILTER MATERIAL",
+        "page": 99,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3172.jpg",
+        "entry_index": 31,
+        "title": "DISINFECTION OF FILTER MATERIAL",
+        "page": 99,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3172.jpg",
+        "entry_index": 33,
+        "title": "METHOD OF INSTALLATION OF FILTER MATERIAL",
+        "page": 99,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3173.jpg",
+        "entry_index": 0,
+        "title": "METHOD OF PAYMENT FOR ARTIFICIAL WELL FILTER",
+        "page": 100,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3173.jpg",
+        "entry_index": 1,
+        "title": "50.000–000–010. Method of Payment",
+        "page": 100,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3173.jpg",
+        "entry_index": 6,
+        "title": "METHODS OF TESTING",
+        "page": 100,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3173.jpg",
+        "entry_index": 10,
+        "title": "METHOD OF PAYMENT FOR WELL PLUMBNESS AND ALIGNMENT",
+        "page": 104,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3173.jpg",
+        "entry_index": 11,
+        "title": "51.010–000–000. Method of Payment",
+        "page": 104,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3173.jpg",
+        "entry_index": 16,
+        "title": "PUMPING OR BAILING METHOD",
+        "page": 106,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3173.jpg",
+        "entry_index": 21,
+        "title": "MECHANICAL SURGING AND PUMPING METHOD",
+        "page": 107,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3173.jpg",
+        "entry_index": 23,
+        "title": "HYDRAULIC JETTING METHOD",
+        "page": 107,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3173.jpg",
+        "entry_index": 25,
+        "title": "AIR DEVELOPMENT METHOD",
+        "page": 107,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3173.jpg",
+        "entry_index": 29,
+        "title": "DEVELOPMENT AIDS",
+        "page": 109,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3173.jpg",
+        "entry_index": 32,
+        "title": "SAND CONTENT TESTING",
+        "page": 109,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3173.jpg",
+        "entry_index": 34,
+        "title": "SAND CONTENT LIMITS",
+        "page": 109,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3174.jpg",
+        "entry_index": 0,
+        "title": "RECORD OF MEASUREMENT",
+        "page": 110,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3174.jpg",
+        "entry_index": 2,
+        "title": "METHOD OF PAYMENT FOR WELL DEVELOPMENT",
+        "page": 110,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3174.jpg",
+        "entry_index": 3,
+        "title": "52.000-000-001. Method of Payment",
+        "page": 110,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3174.jpg",
+        "entry_index": 8,
+        "title": "TYPES OF PUMPING TEST PERFORMED",
+        "page": 112,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3174.jpg",
+        "entry_index": 15,
+        "title": "ABORTED TESTS",
+        "page": 115,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3174.jpg",
+        "entry_index": 17,
+        "title": "LOCATION OF DISCHARGE",
+        "page": 115,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3174.jpg",
+        "entry_index": 19,
+        "title": "RECORD OF PUMPING TESTS",
+        "page": 115,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3174.jpg",
+        "entry_index": 21,
+        "title": "MEASUREMENT OF WATER LEVELS",
+        "page": 116,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3174.jpg",
+        "entry_index": 27,
+        "title": "COLLECTION OF WATER SAMPLES",
+        "page": 117,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3174.jpg",
+        "entry_index": 29,
+        "title": "METHOD OF PAYMENT FOR TESTING FOR PERFORMANCE",
+        "page": 117,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3174.jpg",
+        "entry_index": 35,
+        "title": "SCHEDULING DISINFECTION",
+        "page": 120,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3175.jpg",
+        "entry_index": 0,
+        "title": "INTERIM DISINFECTION",
+        "page": 120,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3175.jpg",
+        "entry_index": 2,
+        "title": "DAILY OPERATIONS DISINFECTION",
+        "page": 121,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3175.jpg",
+        "entry_index": 4,
+        "title": "DISINFECTION PROCEDURE",
+        "page": 121,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3175.jpg",
+        "entry_index": 6,
+        "title": "DISINFECTION OF WATER/TABLE WELLS",
+        "page": 122,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3175.jpg",
+        "entry_index": 15,
+        "title": "METHOD OF PAYMENT FOR WELL DISINFECTION",
+        "page": 123,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3175.jpg",
+        "entry_index": 16,
+        "title": "54.000-000-010. Method of Payment",
+        "page": 123,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3175.jpg",
+        "entry_index": 21,
+        "title": "BACTERIOLOGICAL ANALYSES",
+        "page": 126,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3175.jpg",
+        "entry_index": 23,
+        "title": "ANALYSIS FOR SPECIFIC CONSTITUENTS",
+        "page": 126,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3175.jpg",
+        "entry_index": 25,
+        "title": "ANALYSIS FOR SPECIFIC PURPOSES",
+        "page": 127,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3175.jpg",
+        "entry_index": 31,
+        "title": "TYPES OF SAMPLES",
+        "page": 128,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3175.jpg",
+        "entry_index": 38,
+        "title": "COLLECTION METHODS",
+        "page": 130,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3176.jpg",
+        "entry_index": 3,
+        "title": "WELL HEAD TESTS",
+        "page": 131,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3176.jpg",
+        "entry_index": 10,
+        "title": "STANDARDS OF TEST AND SAMPLES",
+        "page": 132,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3176.jpg",
+        "entry_index": 12,
+        "title": "METHOD OF PAYMENT FOR WATER SAMPLES AND ANALYSES",
+        "page": 133,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3176.jpg",
+        "entry_index": 13,
+        "title": "55.000-000-010. Method of Payment",
+        "page": 133,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3176.jpg",
+        "entry_index": 18,
+        "title": "AQUIFER SEALING CRITERIA",
+        "page": 136,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3176.jpg",
+        "entry_index": 22,
+        "title": "PLACEMENT OF GROUT",
+        "page": 140,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3176.jpg",
+        "entry_index": 27,
+        "title": "PLACEMENT OF FILL",
+        "page": 141,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3176.jpg",
+        "entry_index": 29,
+        "title": "SPECIAL CONDITIONS",
+        "page": 141,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3176.jpg",
+        "entry_index": 31,
+        "title": "WELL ABANDONMENT RECORDS",
+        "page": 142,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3177.jpg",
+        "entry_index": 0,
+        "title": "METHOD OF PAYMENT FOR ABANDONMENT",
+        "page": 142,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      },
+      {
+        "img": "IMG_3177.jpg",
+        "entry_index": 1,
+        "title": "56,000–000–100. Method of Payment",
+        "page": 142,
+        "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000J6P4.TXT"
+      }
+    ]
+  },
+  "BK-0120": {
+    "edition_evidence": "The official EPA PDF title/preface identify the August 1990 second edition (EPA 440/4-90-006), matching the classroom copy. Printed contents pp. v-ix match the supplied photographs; printed p. x supplies the missing continuation.",
+    "coverage_note": "5 photographed contents pages plus the missing final contents page (x), supplied from the official 1990 second-edition PDF.",
+    "note": "Linked chapter page numbers were checked on the actual chapter opening pages. The online continuation below adds Chapter 7 closing sections, Chapters 8-9, references, appendices and the index.",
+    "page_updates": [
+      {
+        "img": "IMG_3294.jpg",
+        "entry_index": 3,
+        "title": "Chapter 1: Overview of Manual",
+        "page": 1,
+        "url": "https://www.epa.gov/sites/default/files/2015-08/documents/the_lake_and_reservoir_restoration_guidance_manual_3.pdf#page=13"
+      },
+      {
+        "img": "IMG_3294.jpg",
+        "entry_index": 16,
+        "title": "Chapter 2: Ecological Concepts",
+        "page": 7,
+        "url": "https://www.epa.gov/sites/default/files/2015-08/documents/the_lake_and_reservoir_restoration_guidance_manual_3.pdf#page=19"
+      },
+      {
+        "img": "IMG_3295.jpg",
+        "entry_index": 5,
+        "title": "Chapter 3: Problem Identification",
+        "page": 35,
+        "url": "https://www.epa.gov/sites/default/files/2015-08/documents/the_lake_and_reservoir_restoration_guidance_manual_3.pdf#page=47"
+      },
+      {
+        "img": "IMG_3296.jpg",
+        "entry_index": 3,
+        "title": "Chapter 4: Predicting Lake Water Quality",
+        "page": 69,
+        "url": "https://www.epa.gov/sites/default/files/2015-08/documents/the_lake_and_reservoir_restoration_guidance_manual_3.pdf#page=81"
+      },
+      {
+        "img": "IMG_3296.jpg",
+        "entry_index": 21,
+        "title": "Chapter 5: Managing the Watershed",
+        "page": 93,
+        "url": "https://www.epa.gov/sites/default/files/2015-08/documents/the_lake_and_reservoir_restoration_guidance_manual_3.pdf#page=105"
+      },
+      {
+        "img": "IMG_3297.jpg",
+        "entry_index": 5,
+        "title": "Chapter 6: Lake and Reservoir Restoration and Management Techniques",
+        "page": 117,
+        "url": "https://www.epa.gov/sites/default/files/2015-08/documents/the_lake_and_reservoir_restoration_guidance_manual_3.pdf#page=129"
+      },
+      {
+        "img": "IMG_3298.jpg",
+        "entry_index": 14,
+        "title": "Chapter 7: Hypothetical Case Study",
+        "page": 161,
+        "url": "https://www.epa.gov/sites/default/files/2015-08/documents/the_lake_and_reservoir_restoration_guidance_manual_3.pdf#page=173"
+      }
+    ],
+    "groups": [
+      {
+        "label": "EPA second-edition PDF - missing contents page x",
+        "url": "https://www.epa.gov/sites/default/files/2015-08/documents/the_lake_and_reservoir_restoration_guidance_manual_3.pdf#page=12",
+        "scope": "Continuation of the photographed contents. Printed page numbers are retained; Chapter 8 (p. 191) and Chapter 9 (p. 203) were checked at their body-page openings.",
+        "entries": [
+          {
+            "l": 2,
+            "t": "In-lake Management Alternatives",
+            "p": 187
+          },
+          {
+            "l": 3,
+            "t": "Public Hearing",
+            "p": 190
+          },
+          {
+            "l": 3,
+            "t": "Selection of Management Plan",
+            "p": 190
+          },
+          {
+            "l": 1,
+            "t": "Chapter 8: Implementing the Management Plan",
+            "p": 191
+          },
+          {
+            "l": 2,
+            "t": "Management Means Implementation",
+            "p": 191
+          },
+          {
+            "l": 3,
+            "t": "Who Does the Work?",
+            "p": 191
+          },
+          {
+            "l": 3,
+            "t": "Selecting Consultants or Contractors",
+            "p": 192
+          },
+          {
+            "l": 2,
+            "t": "Institutional Permits, Fees, And Requirements",
+            "p": 193
+          },
+          {
+            "l": 2,
+            "t": "Implementation Costs Money",
+            "p": 194
+          },
+          {
+            "l": 3,
+            "t": "Plans and Specifications",
+            "p": 194
+          },
+          {
+            "l": 3,
+            "t": "Funding Sources",
+            "p": 194
+          },
+          {
+            "l": 4,
+            "t": "Federal Agencies",
+            "p": 194
+          },
+          {
+            "l": 4,
+            "t": "State Agencies",
+            "p": 196
+          },
+          {
+            "l": 4,
+            "t": "Local Sources",
+            "p": 196
+          },
+          {
+            "l": 2,
+            "t": "Implementation Requires Contracts",
+            "p": 197
+          },
+          {
+            "l": 2,
+            "t": "Implementation Takes Time",
+            "p": 197
+          },
+          {
+            "l": 2,
+            "t": "Public Education is Critical for Sound Lake Management",
+            "p": 198
+          },
+          {
+            "l": 2,
+            "t": "Postrestoration Monitoring is an Integral Part of Implementation",
+            "p": 198
+          },
+          {
+            "l": 1,
+            "t": "Chapter 9: Lake Protection And Maintenance",
+            "p": 203
+          },
+          {
+            "l": 2,
+            "t": "Introduction",
+            "p": 203
+          },
+          {
+            "l": 2,
+            "t": "Lake Organizations",
+            "p": 203
+          },
+          {
+            "l": 2,
+            "t": "Regulations in Lake and Watershed Protection and Management",
+            "p": 204
+          },
+          {
+            "l": 2,
+            "t": "Controlled Development",
+            "p": 204
+          },
+          {
+            "l": 2,
+            "t": "Permits and Ordinances",
+            "p": 208
+          },
+          {
+            "l": 2,
+            "t": "Lake Monitoring",
+            "p": 209
+          },
+          {
+            "l": 2,
+            "t": "The Lake Watch",
+            "p": 209
+          },
+          {
+            "l": 1,
+            "t": "References",
+            "p": 211
+          },
+          {
+            "l": 1,
+            "t": "Appendices",
+            "p": null
+          },
+          {
+            "l": 2,
+            "t": "Appendix A: Metric Units",
+            "p": 217
+          },
+          {
+            "l": 2,
+            "t": "Appendix B: Glossary",
+            "p": 219
+          },
+          {
+            "l": 2,
+            "t": "Appendix C: Point Source Techniques",
+            "p": 225
+          },
+          {
+            "l": 2,
+            "t": "Appendix D: Best Management Practices",
+            "p": 231
+          },
+          {
+            "l": 2,
+            "t": "Appendix E: State/Provincial Lake Management Information",
+            "p": 249
+          },
+          {
+            "l": 2,
+            "t": "Appendix F: Documents and Forms",
+            "p": 313
+          },
+          {
+            "l": 1,
+            "t": "Index",
+            "p": 321
+          }
+        ]
+      }
+    ]
+  },
+  "BK-0145": {
+    "edition_evidence": "INIST-CNRS / BRGM chapter record names the same book, Theophrastus publisher, 1985 and printed pp. 121-140. These match the photographed title/imprint (IMG_3630-3631).",
+    "coverage_note": "No contents photographs were supplied. One chapter and its page range have been independently recovered; this is a partial index.",
+    "groups": [
+      {
+        "label": "INIST-CNRS / BRGM chapter record",
+        "url": "https://pascal-francis.inist.fr/vibad/index.php?action=getRecordDetail&idt=8646963",
+        "scope": "Partial externally verified chapter list; a complete table of contents or open full book has not been established.",
+        "entries": [
+          {
+            "l": 1,
+            "t": "Thermal mineral waters in Hungary - I. Dobos",
+            "p": "121-140"
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "Chapter record: Thermal mineral waters in Hungary",
+        "url": "https://pascal-francis.inist.fr/vibad/index.php?action=getRecordDetail&idt=8646963",
+        "type": "chapter/page evidence",
+        "supports": "BRGM-origin INIST record identifies this 1985 book chapter and printed pages 121-140; metadata licensed CC BY 4.0."
+      }
+    ]
+  },
+  "BK-0146": {
+    "edition_evidence": "IMG_3639 establishes the 1978 second edition, reprinted 1980, ISBNs 0198740662/0198740670. Internet Archive publicly viewable front matter names the second edition; its contents pp. ix-xi and 364-page pagination agree with the second-edition library records. The scan is used at edition level, without changing the physical copy's 1980 printing date.",
+    "coverage_note": "A chapter-level outline and printed page ranges have been recovered from the second-edition public preview.",
+    "catalogue_note": "Identified from the photographed copyright page and second-edition bibliographic records; the title page was not supplied. The classroom copy is the 1980 reprint.",
+    "groups": [
+      {
+        "label": "Second-edition contents - Internet Archive public preview",
+        "url": "https://archive.org/details/quantitativetech0000hamm/page/n9/mode/2up",
+        "scope": "Chapter-level outline, including the printed page ranges on contents pp. ix-xi. The original also lists unpaginated subtopics; those are not included in this outline. This preview is not an unrestricted full-book download.",
+        "entries": [
+          {
+            "l": 1,
+            "t": "Introduction",
+            "p": "xiii-xx"
+          },
+          {
+            "l": 1,
+            "t": "1. Summarizing Data",
+            "p": "1-47"
+          },
+          {
+            "l": 1,
+            "t": "2. Measures of Spatial Distribution",
+            "p": "48-85"
+          },
+          {
+            "l": 1,
+            "t": "3. Time Series",
+            "p": "86-110"
+          },
+          {
+            "l": 1,
+            "t": "4. Probability Distributions",
+            "p": "111-129"
+          },
+          {
+            "l": 1,
+            "t": "5. Samples and Estimates",
+            "p": "130-158"
+          },
+          {
+            "l": 1,
+            "t": "6. Hypothesis Testing",
+            "p": "159-218"
+          },
+          {
+            "l": 1,
+            "t": "7. Correlation",
+            "p": "219-246"
+          },
+          {
+            "l": 1,
+            "t": "8. Regression",
+            "p": "247-268"
+          },
+          {
+            "l": 1,
+            "t": "9. Tests for Distributions in Space",
+            "p": "269-287"
+          },
+          {
+            "l": 1,
+            "t": "10. Models as Quantitative Techniques",
+            "p": "288-328"
+          },
+          {
+            "l": 1,
+            "t": "Appendices",
+            "p": "329-350"
+          },
+          {
+            "l": 1,
+            "t": "Works Referred to the Test",
+            "p": "351-352"
+          },
+          {
+            "l": 1,
+            "t": "Notes",
+            "p": "353-355"
+          },
+          {
+            "l": 1,
+            "t": "Answers to Consolidated Exercises",
+            "p": "356-361"
+          },
+          {
+            "l": 1,
+            "t": "Index",
+            "p": "362-364"
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "Second-edition contents preview: Quantitative techniques in geography",
+        "url": "https://archive.org/details/quantitativetech0000hamm/page/n9/mode/2up",
+        "type": "contents preview",
+        "supports": "Publicly viewable contents pp. ix-xi identify chapter titles and printed page ranges; full-book borrowing is currently unavailable."
+      }
+    ]
+  }
+}

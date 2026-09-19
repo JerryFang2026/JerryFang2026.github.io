@@ -163,6 +163,43 @@ def _same_page_index(existing, pg):
     return best if best_ratio > 0.5 else None
 
 
+def apply_online_contents(books: list[dict]) -> None:
+    """Apply reviewed, source-linked additions without rewriting photo evidence."""
+    path = SITE_DIR / "data" / "contents_supplements.json"
+    if not path.exists():
+        return
+    by_id = {book["id"]: book for book in books}
+    for bid, supplement in json.loads(path.read_text(encoding="utf-8")).items():
+        book = by_id[bid]
+        assert supplement.get("edition_evidence"), f"Missing edition evidence: {bid}"
+        for update in supplement.get("page_updates", []):
+            pages = [pg for pg in book["contents"] if pg["img"] == update["img"]]
+            assert len(pages) == 1, (bid, update["img"])
+            entry = pages[0]["entries"][update["entry_index"]]
+            assert entry["t"] == update["title"] and entry["p"] is None, (bid, update)
+            assert update["url"].startswith("https://") and update["page"] is not None
+            entry["p"] = update["page"]
+            entry["p_source"] = update["url"]
+        groups = supplement.get("groups", [])
+        for group in groups:
+            assert group["url"].startswith("https://") and group["scope"] and group["entries"]
+            assert all(e["t"] and "p" in e for e in group["entries"])
+        if groups:
+            book["online_contents"] = groups
+        if supplement.get("note"):
+            book["supplement_note"] = supplement["note"]
+        if supplement.get("coverage_note"):
+            book["contents_note"] = supplement["coverage_note"]
+        if supplement.get("catalogue_note"):
+            book["catalogue_note"] = supplement["catalogue_note"]
+        seen = {s["url"] for s in book["sources"]}
+        for source in supplement.get("sources", []):
+            assert source["url"].startswith("https://")
+            if source["url"] not in seen:
+                book["sources"].append(source)
+                seen.add(source["url"])
+
+
 def build_library() -> dict:
     books = read_jsonl(CATALOG / "books.jsonl")
     toc_pages = read_jsonl(CATALOG / "toc_pages.jsonl")
@@ -274,6 +311,7 @@ def build_library() -> dict:
             }
         )
 
+    apply_online_contents(out_books)
     out_books.sort(key=lambda x: (-(x["ref_value"] or 0), x["id"]))
 
     out_topics = [
