@@ -1,5 +1,6 @@
 """Generate stable, readable book pages from the existing reviewed catalogue."""
 import html
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -106,7 +107,12 @@ def write_book_pages(library):
     folder.mkdir(exist_ok=True)
     for book in library['books']:
         assert re.fullmatch(r'BK-\d{4}',book['id'])
-        (folder/(book['id']+'.html')).write_text(page_html(book),encoding='utf-8')
+        def version(match):
+            attr, relative = match.group(1), match.group(2)
+            digest = hashlib.sha256((ROOT / relative).read_bytes()).hexdigest()[:12]
+            return f'{attr}="../{relative}?v={digest}"'
+        text = re.sub(r'(src|href)="\.\./((?:assets|data)/[^"?]+\.(?:js|css))"', version, page_html(book))
+        (folder/(book['id']+'.html')).write_text(text,encoding='utf-8')
     urls = [PUBLIC, PUBLIC+'library.html',PUBLIC+'about.html']+[PUBLIC+'books/'+b['id']+'.html' for b in library['books']]
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+esc(u)+'</loc></url>' for u in urls)+'</urlset>\n'
     (ROOT/'sitemap.xml').write_text(sitemap,encoding='utf-8')

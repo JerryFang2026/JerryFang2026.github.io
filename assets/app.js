@@ -115,7 +115,7 @@ function renderPost() {
    conditional request: 304 if nothing changed), and re-render only when the
    data really differs. Any failure is ignored and the page keeps what it has. */
 function refreshData(file, varName, onChange) {
-  const tag = document.querySelector('script[src$="' + file + '"]');
+  const tag = Array.from(document.querySelectorAll('script[src]')).find((s) => s.getAttribute('src').split('?')[0].endsWith(file));
   if (!tag || !window.fetch) return; // e.g. the single-file artifact build inlines its data
   fetch(tag.getAttribute("src"), { cache: "no-cache" })
     .then((r) => (r.ok ? r.text() : Promise.reject(r.status)))

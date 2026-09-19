@@ -14,6 +14,7 @@ No third-party dependencies. Safe to re-run any time.
 from __future__ import annotations
 
 import json
+import hashlib
 import re
 import sys
 from datetime import datetime
@@ -484,6 +485,20 @@ def write_js(path: Path, var: str, payload) -> None:
     path.write_text(f"window.{var} = {text};\n", encoding="utf-8")
 
 
+def version_root_assets() -> None:
+    """Keep a new HTML layout from loading a cached, incompatible script."""
+    for name in ['index.html', 'library.html', 'about.html', 'post.html', 'book.html']:
+        path = SITE_DIR / name
+        if not path.exists():
+            continue
+        def version(match):
+            attr, relative = match.group(1), match.group(2)
+            digest = hashlib.sha256((SITE_DIR / relative).read_bytes()).hexdigest()[:12]
+            return f'{attr}="{relative}?v={digest}"'
+        text = re.sub(r'(src|href)="((?:assets|data)/[^"?]+\.(?:js|css))(?:\?v=[^" ]*)?"', version, path.read_text(encoding='utf-8'))
+        path.write_text(text, encoding='utf-8')
+
+
 def main() -> None:
     DATA_OUT.mkdir(exist_ok=True)
     library = build_library()
@@ -494,6 +509,7 @@ def main() -> None:
     write_js(DATA_OUT / "reading_access.js", "READING_ACCESS", access)
     from book_pages import write_book_pages
     write_book_pages(library)
+    version_root_assets()
     print(f"books: {library['stats']['books']}, toc_pages: {library['stats']['toc_pages']}, posts: {len(posts)}")
     print("wrote data/books.js and data/posts.js")
 
