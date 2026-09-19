@@ -329,7 +329,7 @@ function renderBook(b, terms) {
     (b.catalogue_note ? '<p class="catalogue-note">' + esc(b.catalogue_note) + "</p>" : "") +
     (b.contents_note ? '<p class="contents-note">' + esc(b.contents_note) + "</p>" : "") +
     (b.currentness_note ? '<div class="note">⚠ ' + esc(b.currentness_note) + "</div>" : "") +
-    (b.better_source ? "<p><b>Newer / better edition:</b> " + esc(b.better_source) + "</p>" : "") +
+    (b.better_source ? "<p><b>Related editions &amp; resources:</b> " + esc(b.better_source) + "</p>" : "") +
     ((b.sources || []).length
       ? "<p><b>Links:</b></p><ul class='srcs'>" +
         b.sources.map((s) => '<li><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + "</a> — " + esc(s.supports) + "</li>").join("") + "</ul>"
