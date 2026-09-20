@@ -368,7 +368,7 @@ def md_inline(text: str) -> str:
     return text
 
 
-def md_to_html(md: str) -> str:
+def md_to_html(md: str, *, tables: bool = False) -> str:
     lines = md.splitlines()
     html: list[str] = []
     para: list[str] = []
@@ -395,7 +395,19 @@ def md_to_html(md: str) -> str:
         code_lines.clear()
         in_code = False
 
-    for line in lines:
+    def table_cells(line: str) -> list[str]:
+        # Outer pipes are optional; an escaped pipe belongs to its cell.
+        cells = re.split(r"(?<!\\)\|", line.strip())
+        if not cells[0].strip():
+            cells = cells[1:]
+        if cells and not cells[-1].strip():
+            cells = cells[:-1]
+        return [cell.strip().replace(r"\|", "|") for cell in cells]
+
+    table_end = 0
+    for index, line in enumerate(lines):
+        if index < table_end:
+            continue
         stripped = line.strip()
         if stripped.startswith("```"):  # fenced code block: verbatim, no inline markdown
             flush_para()
@@ -447,6 +459,42 @@ def md_to_html(md: str) -> str:
                 list_mode = "ol"
             html.append("<li>" + md_inline(ordered.group(1)) + "</li>")
             continue
+        if tables and "|" in stripped and index + 1 < len(lines):
+            headers = table_cells(stripped)
+            separators = table_cells(lines[index + 1])
+            if (headers and len(headers) == len(separators)
+                    and all(re.fullmatch(r":?-{3,}:?", cell) for cell in separators)):
+                flush_para()
+                close_list()
+                alignments = [
+                    ' class="align-center"' if cell.startswith(":") and cell.endswith(":")
+                    else ' class="align-right"' if cell.endswith(":") else ""
+                    for cell in separators
+                ]
+
+                def table_row(cells: list[str], header: bool = False) -> str:
+                    tag = "th" if header else "td"
+                    scope = ' scope="col"' if header else ""
+                    # Match the header width: pad short rows and ignore excess cells.
+                    cells = (cells + [""] * len(headers))[:len(headers)]
+                    return "<tr>" + "".join(
+                        f"<{tag}{scope}{alignments[col]}>{md_inline(cell)}</{tag}>"
+                        for col, cell in enumerate(cells)
+                    ) + "</tr>"
+
+                html.append('<div class="table-scroll" role="region" '
+                            'aria-label="Scrollable data table" tabindex="0">')
+                html.append("<table>\n<thead>\n" + table_row(headers, header=True) + "\n</thead>\n<tbody>")
+                table_end = index + 2
+                while table_end < len(lines):
+                    row = lines[table_end].strip()
+                    if ("|" not in row
+                            or re.match(r"^(?:```|#{1,4}\s|>|[-*]\s|\d+[.)]\s)", row)):
+                        break
+                    html.append(table_row(table_cells(row)))
+                    table_end += 1
+                html.append("</tbody>\n</table>\n</div>")
+                continue
         para.append(stripped)
 
     flush_para()
@@ -470,7 +518,8 @@ def build_posts() -> list[dict]:
                 "category": meta.get("category", "杂记"),
                 "summary": meta.get("summary", ""),
                 "draft": meta.get("draft", "").lower() == "true",
-                "html": md_to_html(body),
+                # Opt in so existing articles keep their original rendering.
+                "html": md_to_html(body, tables=meta.get("tables", "").lower() == "true"),
             }
         )
     posts.sort(key=lambda p: p["date"], reverse=True)

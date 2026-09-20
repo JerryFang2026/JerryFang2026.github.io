@@ -110,6 +110,14 @@ article.post blockquote {
 }
 article.post hr { border: none; border-top: 1px solid var(--line); margin: 30px 0; }
 article.post code { font-family: var(--mono); font-size: 0.9em; background: var(--accent-soft); padding: 1px 5px; border-radius: 4px; }
+article.post .table-scroll { max-width: 100%; overflow-x: auto; margin: 20px 0; border: 1px solid var(--line); border-radius: 6px; }
+article.post .table-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+article.post table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.55; }
+article.post th, article.post td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; min-width: 8em; }
+article.post th { background: var(--accent-soft); font-weight: 600; }
+article.post tbody tr:last-child td { border-bottom: none; }
+article.post table .align-center { text-align: center; }
+article.post table .align-right { text-align: right; }
 
 /* ---------------------------------------------------------------- library */
 .lib-head { padding: 36px 0 4px; }

@@ -38,6 +38,8 @@ summary: One-line summary shown in the list.
 Body text. Supports # headings, **bold**, [links](url), - lists, > quotes, and ``` fenced code blocks.
 ```
 
+需要 Markdown 管道表格时，在 frontmatter 加上 `tables: true`；支持表头、列对齐、链接和强调，窄屏可横向滚动。此标记默认关闭，以保持旧文章的渲染不变。
+
 2. 在 site 目录运行 `python build.py`。完成。
 
 发布后读者不需要强制刷新：页面打开时会自动向服务器核对一次文章列表是否最新（`assets/app.js` 里的 `refreshData`），旧了就原地换成新的。资料库页面同理。
