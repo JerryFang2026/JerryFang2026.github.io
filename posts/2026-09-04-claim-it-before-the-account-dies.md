@@ -1,5 +1,5 @@
 ---
-title: Claim it before the account dies
+title: Applying for student software benefits: Microsoft, GitHub and JetBrains
 date: 2026-09-04
 category: Toolkit
 summary: What a student account is still worth in its final weeks, and the specific things that made each application fail on the first attempt.

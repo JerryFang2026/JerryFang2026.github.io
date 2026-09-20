@@ -1,5 +1,5 @@
 ---
-title: Swap the brain, keep the body
+title: Running DeepSeek in Claude Code: configuration and limitations
 date: 2026-09-12
 category: Toolkit
 summary: DeepSeek V4 Pro run inside Claude Code through its Anthropic-compatible endpoint — what the trick is, what the kit around it looks like, and an honest ledger of where the cheap brain falls short.

@@ -1,5 +1,5 @@
 ---
-title: Let the agent hold the phone
+title: Planning AI control of Android phones with ADB, scrcpy and Termux
 date: 2026-09-06
 category: Ideas
 summary: An idea parked for lack of hardware — the same AI that now runs my computer should run my phone, files, apps and all, and on Android nothing stops it but the setup.

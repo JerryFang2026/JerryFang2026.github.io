@@ -1,5 +1,5 @@
 ---
-title: Three brains, one editor
+title: Setting up Copilot, Claude Code and DeepSeek in VS Code
 date: 2026-09-12
 category: Toolkit
 summary: How I split the work inside VS Code — Copilot for the free autocomplete, Claude Code for the heavy lifting, DeepSeek as the cheap sidekick through a bring-your-own-key door — and the afternoon a Windows sandbox made a config file lie to me.

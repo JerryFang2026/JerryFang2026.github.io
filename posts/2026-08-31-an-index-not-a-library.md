@@ -1,5 +1,5 @@
 ---
-title: An index, not a library
+title: Aquifer Notes: a searchable index of hydrogeology books and chapters
 date: 2026-08-31
 category: Meta
 summary: Why I am cataloguing books I cannot scan — and why "just titles and contents pages" is not wasted effort.

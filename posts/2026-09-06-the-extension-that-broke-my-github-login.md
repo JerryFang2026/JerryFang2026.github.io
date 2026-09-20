@@ -1,5 +1,5 @@
 ---
-title: The extension that broke my GitHub login
+title: Fixing GitHub login failures caused by a Chrome new-tab extension
 date: 2026-09-06
 category: Toolkit
 summary: I wanted every link to open in a new tab, refused to trust a stranger's extension with every page I visit, and had my own written instead. It broke GitHub sign-in the same afternoon. What went wrong, how it was fixed, and the source — the first code I have published.
