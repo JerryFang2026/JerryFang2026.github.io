@@ -55,7 +55,8 @@ function renderHeader(active) {
     '<nav class="main">' +
     ['<a href="' + base + 'index.html"' + (active === "home" ? ' class="active"' : "") + ">Home</a>",
      '<a href="' + base + 'library.html"' + (active === "library" ? ' class="active"' : "") + ">Library</a>",
-     '<a href="' + base + 'about.html"' + (active === "about" ? ' class="active"' : "") + ">About</a>"].join("") +
+     '<a href="' + base + 'about.html"' + (active === "about" ? ' class="active"' : "") + ">About</a>",
+     '<a href="https://private-archive.javelinfalcon.workers.dev/" rel="noreferrer">Private Archive</a>'].join("") +
     '<button id="theme-toggle" title="Toggle light/dark">☀︎ / ☾</button>' +
     "</nav></div>";
   document.getElementById("theme-toggle").addEventListener("click", toggleTheme);

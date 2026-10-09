@@ -68,7 +68,7 @@ a:hover { text-decoration: underline; }
 .brand a { color: inherit; }
 .brand a:hover { text-decoration: none; }
 .tagline { color: var(--ink-faint); font-size: 13px; flex: 1 1 auto; }
-nav.main { display: flex; gap: 18px; align-items: baseline; }
+nav.main { display: flex; gap: 18px; align-items: baseline; flex-wrap: wrap; }
 nav.main a { color: var(--ink-soft); font-size: 15px; }
 nav.main a.active { color: var(--accent); font-weight: 600; }
 #theme-toggle {
